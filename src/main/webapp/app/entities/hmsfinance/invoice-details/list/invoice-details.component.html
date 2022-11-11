@@ -1,0 +1,302 @@
+<div>
+  <h2 id="page-heading" data-cy="InvoiceDetailsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.home.title">Invoice Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-invoice-details"
+        [routerLink]="['/invoice-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.home.createLabel"> Create a new Invoice Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="invoiceDetails?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.home.notFound">No Invoice Details found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="invoiceDetails && invoiceDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.contactId">Contact Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cartId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.cartId">Cart Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="itemId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemId">Item Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="itemName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemName">Item Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="itemCode">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemCode">Item Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="itemType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemType">Item Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="paymentType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.paymentType">Payment Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="subscriptionStartingDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionStartingDate">Subscription Starting Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="subscriptionDurationWeeks">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionDurationWeeks">Subscription Duration Weeks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detailAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.detailAmount">Detail Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lineNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.lineNumber">Line Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistId">Nutritionist Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalCost">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalCost">Total Cost</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalProfit">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalProfit">Total Profit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistEarning">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistEarning">Nutritionist Earning</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistPercentage">Nutritionist Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fedaralTaxesAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesAmount">Fedaral Taxes Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fedaralTaxesPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesPercentage">Fedaral Taxes Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="provintionalTaxesAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesAmount">Provintional Taxes Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="provintionalTaxesPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesPercentage">Provintional Taxes Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalTaxesAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesAmount">Total Taxes Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalTaxesPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesPercentage">Total Taxes Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="discountAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountAmount">Discount Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="discountPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountPercentage">Discount Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="addOnCode">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnCode">Add On Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="addOnAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnAmount">Add On Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="addOnPercentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnPercentage">Add On Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalAmount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalAmount">Total Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoiceDetails of invoiceDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/invoice-details', invoiceDetails.id, 'view']">{{ invoiceDetails.id }}</a>
+          </td>
+          <td>{{ invoiceDetails.contactId }}</td>
+          <td>{{ invoiceDetails.cartId }}</td>
+          <td>{{ invoiceDetails.itemId }}</td>
+          <td>{{ invoiceDetails.itemName }}</td>
+          <td>{{ invoiceDetails.itemCode }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.ITEMTYPES.' + invoiceDetails.itemType }}">{{ invoiceDetails.itemType }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.PAYMENTTYPES.' + invoiceDetails.paymentType }}">{{ invoiceDetails.paymentType }}</td>
+          <td>{{ invoiceDetails.subscriptionStartingDate | formatMediumDate }}</td>
+          <td>{{ invoiceDetails.subscriptionDurationWeeks }}</td>
+          <td>{{ invoiceDetails.detailAmount }}</td>
+          <td>{{ invoiceDetails.lineNumber }}</td>
+          <td>{{ invoiceDetails.nutritionistId }}</td>
+          <td>{{ invoiceDetails.totalCost }}</td>
+          <td>{{ invoiceDetails.totalProfit }}</td>
+          <td>{{ invoiceDetails.nutritionistEarning }}</td>
+          <td>{{ invoiceDetails.nutritionistPercentage }}</td>
+          <td>{{ invoiceDetails.fedaralTaxesAmount }}</td>
+          <td>{{ invoiceDetails.fedaralTaxesPercentage }}</td>
+          <td>{{ invoiceDetails.provintionalTaxesAmount }}</td>
+          <td>{{ invoiceDetails.provintionalTaxesPercentage }}</td>
+          <td>{{ invoiceDetails.totalTaxesAmount }}</td>
+          <td>{{ invoiceDetails.totalTaxesPercentage }}</td>
+          <td>{{ invoiceDetails.discountAmount }}</td>
+          <td>{{ invoiceDetails.discountPercentage }}</td>
+          <td>{{ invoiceDetails.addOnCode }}</td>
+          <td>{{ invoiceDetails.addOnAmount }}</td>
+          <td>{{ invoiceDetails.addOnPercentage }}</td>
+          <td>{{ invoiceDetails.totalAmount }}</td>
+          <td>{{ invoiceDetails.createdDate | formatMediumDate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/invoice-details', invoiceDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/invoice-details', invoiceDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(invoiceDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="invoiceDetails && invoiceDetails.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

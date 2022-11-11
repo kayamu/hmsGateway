@@ -1,0 +1,209 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-consultings-heading"
+        data-cy="ConsultingsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.home.createOrEditLabel"
+      >
+        Create or edit a Consultings
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.customerId" for="field_customerId"
+            >Customer Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="customerId"
+            id="field_customerId"
+            data-cy="customerId"
+            formControlName="customerId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.custmerName" for="field_custmerName"
+            >Custmer Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="custmerName"
+            id="field_custmerName"
+            data-cy="custmerName"
+            formControlName="custmerName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistId" for="field_nutritionistId"
+            >Nutritionist Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nutritionistId"
+            id="field_nutritionistId"
+            data-cy="nutritionistId"
+            formControlName="nutritionistId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistName" for="field_nutritionistName"
+            >Nutritionist Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nutritionistName"
+            id="field_nutritionistName"
+            data-cy="nutritionistName"
+            formControlName="nutritionistName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistNotes" for="field_nutritionistNotes"
+            >Nutritionist Notes</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nutritionistNotes"
+            id="field_nutritionistNotes"
+            data-cy="nutritionistNotes"
+            formControlName="nutritionistNotes"
+          />
+          <div
+            *ngIf="
+              editForm.get('nutritionistNotes')!.invalid &&
+              (editForm.get('nutritionistNotes')!.dirty || editForm.get('nutritionistNotes')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nutritionistNotes')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 1024 }"
+            >
+              This field cannot be longer than 1024 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.lastStatus" for="field_lastStatus"
+            >Last Status</label
+          >
+          <select class="form-control" name="lastStatus" formControlName="lastStatus" id="field_lastStatus" data-cy="lastStatus">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.STATUS.null' | translate }}</option>
+            <option *ngFor="let sTATUS of sTATUSValues" [value]="sTATUS">{{ 'hmsgatewayApp.STATUS.' + sTATUS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.epicrysis" for="field_epicryses">Epicrysis</label>
+          <select
+            class="form-control"
+            id="field_epicryses"
+            data-cy="epicrysis"
+            multiple
+            name="epicryses"
+            formControlName="epicryses"
+            [compareWith]="compareEpicrysis"
+          >
+            <option [ngValue]="epicrysisOption" *ngFor="let epicrysisOption of epicrysesSharedCollection">
+              {{ epicrysisOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.menuSuggestions" for="field_menuSuggestions"
+            >Menu Suggestions</label
+          >
+          <select
+            class="form-control"
+            id="field_menuSuggestions"
+            data-cy="menuSuggestions"
+            multiple
+            name="menuSuggestions"
+            formControlName="menuSuggestions"
+            [compareWith]="compareMenuSuggestions"
+          >
+            <option [ngValue]="menuSuggestionsOption" *ngFor="let menuSuggestionsOption of menuSuggestionsSharedCollection">
+              {{ menuSuggestionsOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.consultingStatus" for="field_consultingStatus"
+            >Consulting Status</label
+          >
+          <select
+            class="form-control"
+            id="field_consultingStatus"
+            data-cy="consultingStatus"
+            name="consultingStatus"
+            formControlName="consultingStatus"
+            [compareWith]="compareConsultingStatus"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="consultingStatusOption" *ngFor="let consultingStatusOption of consultingStatusesSharedCollection">
+              {{ consultingStatusOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "hmsgatewayApp": {
+    "EMPLOYMENTTYPES": {
+      "null": "",
+      "CONTRACTED": "contracted",
+      "FULLTIME": "fulltime",
+      "PARTTIME": "parttime"
+    }
+  }
+}

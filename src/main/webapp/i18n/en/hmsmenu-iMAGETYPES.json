@@ -1,0 +1,11 @@
+{
+  "hmsgatewayApp": {
+    "IMAGETYPES": {
+      "null": "",
+      "PROMOTED": "PROMOTED",
+      "NORMAL": "NORMAL",
+      "FIRST": "FIRST",
+      "LAST": "LAST"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174220",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "conditions",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "VALUETYPES",
+      "fieldValues": "PERCENTAGE (percentage),AMOUNT (amount)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "Conditions",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "templateItems",
+      "otherEntityRelationshipName": "conditions",
+      "relationshipName": "templateItem",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "conditionDetails",
+      "otherEntityRelationshipName": "condition",
+      "ownerSide": true,
+      "relationshipName": "conditionDetails",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

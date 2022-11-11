@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoices">
+      <h2 data-cy="invoicesDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.detail.title">Invoices</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ invoices.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.invoiceNumber">Invoice Number</span></dt>
+        <dd>
+          <span>{{ invoices.invoiceNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ invoices.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.contactAddressId">Contact Address Id</span></dt>
+        <dd>
+          <span>{{ invoices.contactAddressId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.contactBillingAdrId">Contact Billing Adr Id</span></dt>
+        <dd>
+          <span>{{ invoices.contactBillingAdrId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.cartId">Cart Id</span></dt>
+        <dd>
+          <span>{{ invoices.cartId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.INVOICETYPES.' + invoices.type }}">{{ invoices.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.requestDate">Request Date</span></dt>
+        <dd>
+          <span>{{ invoices.requestDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.contactName">Contact Name</span></dt>
+        <dd>
+          <span>{{ invoices.contactName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.invoiceDate">Invoice Date</span></dt>
+        <dd>
+          <span>{{ invoices.invoiceDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.lastTranactionId">Last Tranaction Id</span></dt>
+        <dd>
+          <span>{{ invoices.lastTranactionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.totalCost">Total Cost</span></dt>
+        <dd>
+          <span>{{ invoices.totalCost }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.totalProfit">Total Profit</span></dt>
+        <dd>
+          <span>{{ invoices.totalProfit }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ invoices.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.totalTaxes">Total Taxes</span></dt>
+        <dd>
+          <span>{{ invoices.totalTaxes }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.fedaralTaxesAmount">Fedaral Taxes Amount</span></dt>
+        <dd>
+          <span>{{ invoices.fedaralTaxesAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.provintionalTaxesAmount">Provintional Taxes Amount</span></dt>
+        <dd>
+          <span>{{ invoices.provintionalTaxesAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.discountsAmount">Discounts Amount</span></dt>
+        <dd>
+          <span>{{ invoices.discountsAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.addOnAmount">Add On Amount</span></dt>
+        <dd>
+          <span>{{ invoices.addOnAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.message">Message</span></dt>
+        <dd>
+          <span>{{ invoices.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ invoices.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoices.invoiceDetails">Invoice Details</span></dt>
+        <dd>
+          <span *ngFor="let invoiceDetails of invoices.invoiceDetails; let last = last">
+            <a [routerLink]="['/invoice-details', invoiceDetails.id, 'view']">{{ invoiceDetails.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoices', invoices.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

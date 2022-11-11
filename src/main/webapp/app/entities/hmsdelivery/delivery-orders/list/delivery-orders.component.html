@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="DeliveryOrdersHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.home.title">Delivery Orders</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-delivery-orders"
+        [routerLink]="['/delivery-orders/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.home.createLabel"> Create a new Delivery Orders </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="deliveryOrders?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.home.notFound">No Delivery Orders found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="deliveryOrders && deliveryOrders.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deliveryId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryId">Delivery Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="invoiceNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.invoiceNumber">Invoice Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactId">Contact Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactName">Contact Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactAddressId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactAddressId">Contact Address Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactCartId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactCartId">Contact Cart Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deliveryDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryDate">Delivery Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="requestDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.requestDate">Request Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemId">Menu Item Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemName">Menu Item Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemCode">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemCode">Menu Item Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lineNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.lineNumber">Line Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detail">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.detail">Detail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="message">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.message">Message</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deliveryTransactions.id">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryTransactions">Delivery Transactions</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deliveryOrders of deliveryOrders; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/delivery-orders', deliveryOrders.id, 'view']">{{ deliveryOrders.id }}</a>
+          </td>
+          <td>{{ deliveryOrders.deliveryId }}</td>
+          <td>{{ deliveryOrders.invoiceNumber }}</td>
+          <td>{{ deliveryOrders.contactId }}</td>
+          <td>{{ deliveryOrders.contactName }}</td>
+          <td>{{ deliveryOrders.contactAddressId }}</td>
+          <td>{{ deliveryOrders.contactCartId }}</td>
+          <td>{{ deliveryOrders.deliveryDate | formatMediumDate }}</td>
+          <td>{{ deliveryOrders.requestDate | formatMediumDate }}</td>
+          <td>{{ deliveryOrders.menuItemId }}</td>
+          <td>{{ deliveryOrders.menuItemName }}</td>
+          <td>{{ deliveryOrders.menuItemCode }}</td>
+          <td>{{ deliveryOrders.lineNumber }}</td>
+          <td>{{ deliveryOrders.detail }}</td>
+          <td>{{ deliveryOrders.message }}</td>
+          <td>{{ deliveryOrders.createdDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let deliveryTransactions of deliveryOrders.deliveryTransactions; let last = last">
+              <a class="form-control-static" [routerLink]="['/delivery-transactions', deliveryTransactions.id, 'view']">{{
+                deliveryTransactions.id
+              }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/delivery-orders', deliveryOrders.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/delivery-orders', deliveryOrders.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(deliveryOrders)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

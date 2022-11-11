@@ -1,0 +1,34 @@
+{
+  "hmsgatewayApp": {
+    "hmscustomerAllergens": {
+      "home": {
+        "title": "Allergens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Allergens",
+        "createOrEditLabel": "Create or edit a Allergens",
+        "notFound": "No Allergens found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Allergens {{ id }}?"
+      },
+      "detail": {
+        "title": "Allergens"
+      },
+      "id": "ID",
+      "name": "Name",
+      "contactId": "Contact Id",
+      "ingradientId": "Ingradient Id",
+      "active": "Active",
+      "detail": "Detail",
+      "createdDate": "Created Date",
+      "customerHealths": "Customer Healths"
+    }
+  },
+  "hmscustomerApp": {
+    "hmscustomerAllergens": {
+      "created": "A new Allergens is created with identifier {{ param }}",
+      "updated": "A Allergens is updated with identifier {{ param }}",
+      "deleted": "A Allergens is deleted with identifier {{ param }}"
+    }
+  }
+}

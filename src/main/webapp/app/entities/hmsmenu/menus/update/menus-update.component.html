@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-menus-heading" data-cy="MenusCreateUpdateHeading" jhiTranslate="hmsgatewayApp.hmsmenuMenus.home.createOrEditLabel">
+        Create or edit a Menus
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.menuDay" for="field_menuDay">Menu Day</label>
+          <select class="form-control" name="menuDay" formControlName="menuDay" id="field_menuDay" data-cy="menuDay">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.DAYS.null' | translate }}</option>
+            <option *ngFor="let dAYS of dAYSValues" [value]="dAYS">{{ 'hmsgatewayApp.DAYS.' + dAYS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.menuTime" for="field_menuTime">Menu Time</label>
+          <select class="form-control" name="menuTime" formControlName="menuTime" id="field_menuTime" data-cy="menuTime">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.REPAST.null' | translate }}</option>
+            <option *ngFor="let rEPAST of rEPASTValues" [value]="rEPAST">{{ 'hmsgatewayApp.REPAST.' + rEPAST | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.contactId" for="field_contactId">Contact Id</label>
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.cost" for="field_cost">Cost</label>
+          <input type="number" class="form-control" name="cost" id="field_cost" data-cy="cost" formControlName="cost" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.salesPrice" for="field_salesPrice">Sales Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="salesPrice"
+            id="field_salesPrice"
+            data-cy="salesPrice"
+            formControlName="salesPrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.explanation" for="field_explanation">Explanation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="explanation"
+            id="field_explanation"
+            data-cy="explanation"
+            formControlName="explanation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsmenuMenus.imagesUrls" for="field_imagesUrls">Images Urls</label>
+          <select
+            class="form-control"
+            id="field_imagesUrls"
+            data-cy="imagesUrls"
+            multiple
+            name="imagesUrls"
+            formControlName="imagesUrls"
+            [compareWith]="compareImagesUrl"
+          >
+            <option [ngValue]="imagesUrlOption" *ngFor="let imagesUrlOption of imagesUrlsSharedCollection">
+              {{ imagesUrlOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsmenuMenus.meals" for="field_meals">Meals</label>
+          <select
+            class="form-control"
+            id="field_meals"
+            data-cy="meals"
+            multiple
+            name="meals"
+            formControlName="meals"
+            [compareWith]="compareMeals"
+          >
+            <option [ngValue]="mealsOption" *ngFor="let mealsOption of mealsSharedCollection">{{ mealsOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenus.nutriens" for="field_nutriens">Nutriens</label>
+          <select
+            class="form-control"
+            id="field_nutriens"
+            data-cy="nutriens"
+            name="nutriens"
+            formControlName="nutriens"
+            [compareWith]="compareNutriens"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="nutriensOption" *ngFor="let nutriensOption of nutriensSharedCollection">{{ nutriensOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

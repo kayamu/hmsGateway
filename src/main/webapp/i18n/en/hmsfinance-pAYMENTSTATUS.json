@@ -1,0 +1,10 @@
+{
+  "hmsgatewayApp": {
+    "PAYMENTSTATUS": {
+      "null": "",
+      "PAID": "paid",
+      "CANCELLED": "cancelled",
+      "WAITING": "waiting"
+    }
+  }
+}

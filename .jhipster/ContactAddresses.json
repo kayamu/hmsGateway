@@ -1,0 +1,89 @@
+{
+  "applications": ["hmsgateway", "hmscontact"],
+  "changelogDate": "20221111173620",
+  "clientRootFolder": "hmscontact",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "contact_addresses",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bussinessName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bussinessId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "province",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "contractStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "agrrementId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "employmentType",
+      "fieldType": "EMPLOYMENTTYPES",
+      "fieldValues": "CONTRACTED (contracted),FULLTIME (fulltime),PARTTIME (parttime)"
+    },
+    {
+      "fieldName": "hourlyRate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmscontact",
+  "name": "ContactAddresses",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "contacts",
+      "otherEntityRelationshipName": "contactAddresses",
+      "ownerSide": false,
+      "relationshipName": "contacts",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cookOrders">
+      <h2 data-cy="cookOrdersDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.detail.title">Cook Orders</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cookOrders.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.kitchenId">Kitchen Id</span></dt>
+        <dd>
+          <span>{{ cookOrders.kitchenId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerId">Customer Id</span></dt>
+        <dd>
+          <span>{{ cookOrders.customerId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerCartId">Customer Cart Id</span></dt>
+        <dd>
+          <span>{{ cookOrders.customerCartId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemId">Menu Item Id</span></dt>
+        <dd>
+          <span>{{ cookOrders.menuItemId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemName">Menu Item Name</span></dt>
+        <dd>
+          <span>{{ cookOrders.menuItemName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemCode">Menu Item Code</span></dt>
+        <dd>
+          <span>{{ cookOrders.menuItemCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.mealId">Meal Id</span></dt>
+        <dd>
+          <span>{{ cookOrders.mealId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.lineNumber">Line Number</span></dt>
+        <dd>
+          <span>{{ cookOrders.lineNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.requestDate">Request Date</span></dt>
+        <dd>
+          <span>{{ cookOrders.requestDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.message">Message</span></dt>
+        <dd>
+          <span>{{ cookOrders.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ cookOrders.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.cookTransactions">Cook Transactions</span></dt>
+        <dd>
+          <span *ngFor="let cookTransactions of cookOrders.cookTransactions; let last = last">
+            <a [routerLink]="['/cook-transactions', cookTransactions.id, 'view']">{{ cookTransactions.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cook-orders', cookOrders.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

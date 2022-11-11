@@ -1,0 +1,79 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111173920",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "nutriens",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "protein",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "carb",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "kcal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "Nutriens",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "menuGroups",
+      "otherEntityRelationshipName": "nutriens",
+      "relationshipName": "menuGroups",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "menus",
+      "otherEntityRelationshipName": "nutriens",
+      "relationshipName": "menus",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "mealIngredients",
+      "otherEntityRelationshipName": "nutriens",
+      "relationshipName": "mealIngredients",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "meals",
+      "otherEntityRelationshipName": "nutriens",
+      "relationshipName": "meals",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "ingredients",
+      "otherEntityRelationshipName": "nutriens",
+      "relationshipName": "ingredients",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

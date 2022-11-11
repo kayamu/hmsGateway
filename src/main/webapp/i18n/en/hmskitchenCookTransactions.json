@@ -1,0 +1,33 @@
+{
+  "hmsgatewayApp": {
+    "hmskitchenCookTransactions": {
+      "home": {
+        "title": "Cook Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cook Transactions",
+        "createOrEditLabel": "Create or edit a Cook Transactions",
+        "notFound": "No Cook Transactions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cook Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Cook Transactions"
+      },
+      "id": "ID",
+      "kitchenId": "Kitchen Id",
+      "statusChangedDate": "Status Changed Date",
+      "transactionDate": "Transaction Date",
+      "type": "Type",
+      "createdDate": "Created Date",
+      "cookOrders": "Cook Orders"
+    }
+  },
+  "hmskitchenApp": {
+    "hmskitchenCookTransactions": {
+      "created": "A new Cook Transactions is created with identifier {{ param }}",
+      "updated": "A Cook Transactions is updated with identifier {{ param }}",
+      "deleted": "A Cook Transactions is deleted with identifier {{ param }}"
+    }
+  }
+}

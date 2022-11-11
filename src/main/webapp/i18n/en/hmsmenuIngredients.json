@@ -1,0 +1,33 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuIngredients": {
+      "home": {
+        "title": "Ingredients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ingredients",
+        "createOrEditLabel": "Create or edit a Ingredients",
+        "notFound": "No Ingredients found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Ingredients {{ id }}?"
+      },
+      "detail": {
+        "title": "Ingredients"
+      },
+      "id": "ID",
+      "name": "Name",
+      "createdDate": "Created Date",
+      "mealIngredients": "Meal Ingredients",
+      "imagesUrls": "Images Urls",
+      "nutriens": "Nutriens",
+      "menuGroups": "Menu Groups"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuIngredients": {
+      "created": "A new Ingredients is created with identifier {{ param }}",
+      "updated": "A Ingredients is updated with identifier {{ param }}",
+      "deleted": "A Ingredients is deleted with identifier {{ param }}"
+    }
+  }
+}

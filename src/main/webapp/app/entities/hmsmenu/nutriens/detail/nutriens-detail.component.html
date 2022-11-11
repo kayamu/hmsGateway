@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="nutriens">
+      <h2 data-cy="nutriensDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.detail.title">Nutriens</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ nutriens.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.name">Name</span></dt>
+        <dd>
+          <span>{{ nutriens.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.protein">Protein</span></dt>
+        <dd>
+          <span>{{ nutriens.protein }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.carb">Carb</span></dt>
+        <dd>
+          <span>{{ nutriens.carb }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.fat">Fat</span></dt>
+        <dd>
+          <span>{{ nutriens.fat }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.kcal">Kcal</span></dt>
+        <dd>
+          <span>{{ nutriens.kcal }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuNutriens.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ nutriens.createdDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nutriens', nutriens.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

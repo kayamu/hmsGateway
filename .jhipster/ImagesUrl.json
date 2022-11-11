@@ -1,0 +1,76 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111173520",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "images_url",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "IMAGETYPES",
+      "fieldValues": "PROMOTED,NORMAL,FIRST,LAST"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "ImagesUrl",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "menuGroups",
+      "otherEntityRelationshipName": "imagesUrls",
+      "ownerSide": false,
+      "relationshipName": "menuGroups",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "menus",
+      "otherEntityRelationshipName": "imagesUrls",
+      "ownerSide": false,
+      "relationshipName": "menus",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "meals",
+      "otherEntityRelationshipName": "imagesUrls",
+      "ownerSide": false,
+      "relationshipName": "meals",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "ingredients",
+      "otherEntityRelationshipName": "imagesUrls",
+      "ownerSide": false,
+      "relationshipName": "ingredients",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "recipies",
+      "otherEntityRelationshipName": "imagesUrls",
+      "ownerSide": false,
+      "relationshipName": "recipe",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

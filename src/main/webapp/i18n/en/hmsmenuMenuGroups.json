@@ -1,0 +1,48 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuMenuGroups": {
+      "home": {
+        "title": "Menu Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Menu Groups",
+        "createOrEditLabel": "Create or edit a Menu Groups",
+        "notFound": "No Menu Groups found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Menu Groups {{ id }}?"
+      },
+      "detail": {
+        "title": "Menu Groups"
+      },
+      "id": "ID",
+      "contactId": "Contact Id",
+      "name": "Name",
+      "cost": "Cost",
+      "salesPrice": "Sales Price",
+      "explanation": "Explanation",
+      "goal": "Goal",
+      "bodyType": "Body Type",
+      "activityLevelMin": "Activity Level Min",
+      "activityLevelMax": "Activity Level Max",
+      "weightMin": "Weight Min",
+      "weightMax": "Weight Max",
+      "dailyKcalMin": "Daily Kcal Min",
+      "dailyKcalMax": "Daily Kcal Max",
+      "targetWeightMin": "Target Weight Min",
+      "targetWeightMax": "Target Weight Max",
+      "unit": "Unit",
+      "createdDate": "Created Date",
+      "ingradients": "Ingradients",
+      "menus": "Menus",
+      "imagesUrls": "Images Urls",
+      "nutriens": "Nutriens"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuMenuGroups": {
+      "created": "A new Menu Groups is created with identifier {{ param }}",
+      "updated": "A Menu Groups is updated with identifier {{ param }}",
+      "deleted": "A Menu Groups is deleted with identifier {{ param }}"
+    }
+  }
+}

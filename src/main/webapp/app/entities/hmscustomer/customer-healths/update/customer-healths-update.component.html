@@ -1,0 +1,204 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-customer-healths-heading"
+        data-cy="CustomerHealthsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.home.createOrEditLabel"
+      >
+        Create or edit a Customer Healths
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.contactId" for="field_contactId"
+            >Contact Id</label
+          >
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentWeight" for="field_currentWeight"
+            >Current Weight</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="currentWeight"
+            id="field_currentWeight"
+            data-cy="currentWeight"
+            formControlName="currentWeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentHeight" for="field_currentHeight"
+            >Current Height</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="currentHeight"
+            id="field_currentHeight"
+            data-cy="currentHeight"
+            formControlName="currentHeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.measureUnit" for="field_measureUnit"
+            >Measure Unit</label
+          >
+          <select class="form-control" name="measureUnit" formControlName="measureUnit" id="field_measureUnit" data-cy="measureUnit">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.UNITS.null' | translate }}</option>
+            <option *ngFor="let uNITS of uNITSValues" [value]="uNITS">{{ 'hmsgatewayApp.UNITS.' + uNITS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.activityLevel" for="field_activityLevel"
+            >Activity Level</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activityLevel"
+            id="field_activityLevel"
+            data-cy="activityLevel"
+            formControlName="activityLevel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetWeight" for="field_targetWeight"
+            >Target Weight</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="targetWeight"
+            id="field_targetWeight"
+            data-cy="targetWeight"
+            formControlName="targetWeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targerCalorie" for="field_targerCalorie"
+            >Targer Calorie</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="targerCalorie"
+            id="field_targerCalorie"
+            data-cy="targerCalorie"
+            formControlName="targerCalorie"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetBodyFat" for="field_targetBodyFat"
+            >Target Body Fat</label
+          >
+          <select
+            class="form-control"
+            name="targetBodyFat"
+            formControlName="targetBodyFat"
+            id="field_targetBodyFat"
+            data-cy="targetBodyFat"
+          >
+            <option [ngValue]="null">{{ 'hmsgatewayApp.BODYFATS.null' | translate }}</option>
+            <option *ngFor="let bODYFATS of bODYFATSValues" [value]="bODYFATS">
+              {{ 'hmsgatewayApp.BODYFATS.' + bODYFATS | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.goal" for="field_goal">Goal</label>
+          <select class="form-control" name="goal" formControlName="goal" id="field_goal" data-cy="goal">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.GOALS.null' | translate }}</option>
+            <option *ngFor="let gOALS of gOALSValues" [value]="gOALS">{{ 'hmsgatewayApp.GOALS.' + gOALS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.active" for="field_active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.detail" for="field_detail">Detail</label>
+          <input type="text" class="form-control" name="detail" id="field_detail" data-cy="detail" formControlName="detail" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.allergens" for="field_allergens">Allergens</label>
+          <select
+            class="form-control"
+            id="field_allergens"
+            data-cy="allergens"
+            multiple
+            name="allergens"
+            formControlName="allergens"
+            [compareWith]="compareAllergens"
+          >
+            <option [ngValue]="allergensOption" *ngFor="let allergensOption of allergensSharedCollection">
+              {{ allergensOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

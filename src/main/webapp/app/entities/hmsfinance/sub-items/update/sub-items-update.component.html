@@ -1,0 +1,139 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sub-items-heading"
+        data-cy="SubItemsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.home.createOrEditLabel"
+      >
+        Create or edit a Sub Items
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.actualValue" for="field_actualValue">Actual Value</label>
+          <input
+            type="number"
+            class="form-control"
+            name="actualValue"
+            id="field_actualValue"
+            data-cy="actualValue"
+            formControlName="actualValue"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.percentage" for="field_percentage">Percentage</label>
+          <input
+            type="number"
+            class="form-control"
+            name="percentage"
+            id="field_percentage"
+            data-cy="percentage"
+            formControlName="percentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.baseValue" for="field_baseValue">Base Value</label>
+          <input type="number" class="form-control" name="baseValue" id="field_baseValue" data-cy="baseValue" formControlName="baseValue" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.DETAILTYPES.null' | translate }}</option>
+            <option *ngFor="let dETAILTYPES of dETAILTYPESValues" [value]="dETAILTYPES">
+              {{ 'hmsgatewayApp.DETAILTYPES.' + dETAILTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.valueType" for="field_valueType">Value Type</label>
+          <select class="form-control" name="valueType" formControlName="valueType" id="field_valueType" data-cy="valueType">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.VALUETYPES.null' | translate }}</option>
+            <option *ngFor="let vALUETYPES of vALUETYPESValues" [value]="vALUETYPES">
+              {{ 'hmsgatewayApp.VALUETYPES.' + vALUETYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.calculatedValue" for="field_calculatedValue"
+            >Calculated Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="calculatedValue"
+            id="field_calculatedValue"
+            data-cy="calculatedValue"
+            formControlName="calculatedValue"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.templateItemId" for="field_templateItemId"
+            >Template Item Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="templateItemId"
+            id="field_templateItemId"
+            data-cy="templateItemId"
+            formControlName="templateItemId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

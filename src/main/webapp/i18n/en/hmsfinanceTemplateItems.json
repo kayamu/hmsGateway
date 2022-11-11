@@ -1,0 +1,39 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceTemplateItems": {
+      "home": {
+        "title": "Template Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Template Items",
+        "createOrEditLabel": "Create or edit a Template Items",
+        "notFound": "No Template Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Template Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Template Items"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code",
+      "type": "Type",
+      "valueType": "Value Type",
+      "amount": "Amount",
+      "explanation": "Explanation",
+      "startDate": "Start Date",
+      "dueDate": "Due Date",
+      "isOnce": "Is Once",
+      "createdDate": "Created Date",
+      "conditions": "Conditions",
+      "templates": "Templates"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceTemplateItems": {
+      "created": "A new Template Items is created with identifier {{ param }}",
+      "updated": "A Template Items is updated with identifier {{ param }}",
+      "deleted": "A Template Items is deleted with identifier {{ param }}"
+    }
+  }
+}

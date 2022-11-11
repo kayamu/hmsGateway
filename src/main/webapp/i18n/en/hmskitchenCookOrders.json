@@ -1,0 +1,39 @@
+{
+  "hmsgatewayApp": {
+    "hmskitchenCookOrders": {
+      "home": {
+        "title": "Cook Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cook Orders",
+        "createOrEditLabel": "Create or edit a Cook Orders",
+        "notFound": "No Cook Orders found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cook Orders {{ id }}?"
+      },
+      "detail": {
+        "title": "Cook Orders"
+      },
+      "id": "ID",
+      "kitchenId": "Kitchen Id",
+      "customerId": "Customer Id",
+      "customerCartId": "Customer Cart Id",
+      "menuItemId": "Menu Item Id",
+      "menuItemName": "Menu Item Name",
+      "menuItemCode": "Menu Item Code",
+      "mealId": "Meal Id",
+      "lineNumber": "Line Number",
+      "requestDate": "Request Date",
+      "message": "Message",
+      "createdDate": "Created Date",
+      "cookTransactions": "Cook Transactions"
+    }
+  },
+  "hmskitchenApp": {
+    "hmskitchenCookOrders": {
+      "created": "A new Cook Orders is created with identifier {{ param }}",
+      "updated": "A Cook Orders is updated with identifier {{ param }}",
+      "deleted": "A Cook Orders is deleted with identifier {{ param }}"
+    }
+  }
+}

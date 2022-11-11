@@ -1,0 +1,44 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174320",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "invoice_transactions",
+  "fields": [
+    {
+      "fieldName": "statusChangedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "transactionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "INVOICETYPES",
+      "fieldValues": "PROPOSAL (proposal),CANCELLED (cancelled),BILLED (billed),PAID (paid)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "InvoiceTransactions",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "invoiceNumber",
+      "otherEntityName": "invoices",
+      "otherEntityRelationshipName": "invoiceTransactions",
+      "relationshipName": "invoices",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,33 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuRecipies": {
+      "home": {
+        "title": "Recipies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Recipies",
+        "createOrEditLabel": "Create or edit a Recipies",
+        "notFound": "No Recipies found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Recipies {{ id }}?"
+      },
+      "detail": {
+        "title": "Recipies"
+      },
+      "id": "ID",
+      "name": "Name",
+      "recipe": "Recipe",
+      "explanation": "Explanation",
+      "createdDate": "Created Date",
+      "meal": "Meal",
+      "imagesUrls": "Images Urls"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuRecipies": {
+      "created": "A new Recipies is created with identifier {{ param }}",
+      "updated": "A Recipies is updated with identifier {{ param }}",
+      "deleted": "A Recipies is deleted with identifier {{ param }}"
+    }
+  }
+}

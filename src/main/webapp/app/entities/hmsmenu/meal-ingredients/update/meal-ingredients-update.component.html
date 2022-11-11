@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-meal-ingredients-heading"
+        data-cy="MealIngredientsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.home.createOrEditLabel"
+      >
+        Create or edit a Meal Ingredients
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.amount" for="field_amount">Amount</label>
+          <input type="text" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.unit" for="field_unit">Unit</label>
+          <input type="text" class="form-control" name="unit" id="field_unit" data-cy="unit" formControlName="unit" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.nutriens" for="field_nutriens">Nutriens</label>
+          <select
+            class="form-control"
+            id="field_nutriens"
+            data-cy="nutriens"
+            name="nutriens"
+            formControlName="nutriens"
+            [compareWith]="compareNutriens"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="nutriensOption" *ngFor="let nutriensOption of nutriensSharedCollection">{{ nutriensOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.ingradients" for="field_ingradients"
+            >Ingradients</label
+          >
+          <select
+            class="form-control"
+            id="field_ingradients"
+            data-cy="ingradients"
+            name="ingradients"
+            formControlName="ingradients"
+            [compareWith]="compareIngredients"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ingredientsOption" *ngFor="let ingredientsOption of ingredientsSharedCollection">
+              {{ ingredientsOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

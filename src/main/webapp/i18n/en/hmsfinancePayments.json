@@ -1,0 +1,36 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinancePayments": {
+      "home": {
+        "title": "Payments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payments",
+        "createOrEditLabel": "Create or edit a Payments",
+        "notFound": "No Payments found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Payments {{ id }}?"
+      },
+      "detail": {
+        "title": "Payments"
+      },
+      "id": "ID",
+      "refNumber": "Ref Number",
+      "paymentType": "Payment Type",
+      "contactId": "Contact Id",
+      "explanation": "Explanation",
+      "operationDate": "Operation Date",
+      "amount": "Amount",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "invoices": "Invoices"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinancePayments": {
+      "created": "A new Payments is created with identifier {{ param }}",
+      "updated": "A Payments is updated with identifier {{ param }}",
+      "deleted": "A Payments is deleted with identifier {{ param }}"
+    }
+  }
+}

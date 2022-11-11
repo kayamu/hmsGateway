@@ -1,0 +1,36 @@
+{
+  "applications": ["hmsgateway", "hmsnutritionist"],
+  "changelogDate": "20221111180320",
+  "clientRootFolder": "hmsnutritionist",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "consulting_status",
+  "fields": [
+    {
+      "fieldName": "nutritionistId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastStatus",
+      "fieldType": "STATUS",
+      "fieldValues": "WAITING (waiting),ACCEPTED (accepted),CANCELLED (cancelled),TRANSFERED (transfered)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsnutritionist",
+  "name": "ConsultingStatus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "consultings",
+      "otherEntityRelationshipName": "consultingStatus",
+      "relationshipName": "consultings",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="templateItems">
+      <h2 data-cy="templateItemsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.detail.title">Template Items</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ templateItems.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.name">Name</span></dt>
+        <dd>
+          <span>{{ templateItems.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.code">Code</span></dt>
+        <dd>
+          <span>{{ templateItems.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.DETAILTYPES.' + templateItems.type }}">{{ templateItems.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.valueType">Value Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.VALUETYPES.' + templateItems.valueType }}">{{ templateItems.valueType }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.amount">Amount</span></dt>
+        <dd>
+          <span>{{ templateItems.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ templateItems.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ templateItems.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.dueDate">Due Date</span></dt>
+        <dd>
+          <span>{{ templateItems.dueDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.isOnce">Is Once</span></dt>
+        <dd>
+          <span>{{ templateItems.isOnce }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ templateItems.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplateItems.conditions">Conditions</span></dt>
+        <dd>
+          <div *ngIf="templateItems.conditions">
+            <a [routerLink]="['/conditions', templateItems.conditions.id, 'view']">{{ templateItems.conditions.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/template-items', templateItems.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

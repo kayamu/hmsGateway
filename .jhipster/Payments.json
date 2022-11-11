@@ -1,0 +1,61 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111175220",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "payments",
+  "fields": [
+    {
+      "fieldName": "refNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PAYMENTTYPES",
+      "fieldValues": "IN,OUT"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "operationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "PAYMENTSTATUS",
+      "fieldValues": "PAID (paid),CANCELLED (cancelled),WAITING (waiting)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "Payments",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "invoiceNumber",
+      "otherEntityName": "invoices",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "invoices",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

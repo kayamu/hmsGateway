@@ -1,0 +1,10 @@
+{
+  "hmsgatewayApp": {
+    "GOALS": {
+      "null": "",
+      "LOSEFAT": "LOSEFAT",
+      "MAINTAIN": "MAINTAIN",
+      "BUILDMUCSLE": "BUILDMUCSLE"
+    }
+  }
+}

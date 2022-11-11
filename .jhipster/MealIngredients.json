@@ -1,0 +1,57 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111175620",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "meal_ingredients",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "MealIngredients",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "nutriens",
+      "otherEntityRelationshipName": "mealIngredients",
+      "relationshipName": "nutriens",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "ingredients",
+      "otherEntityRelationshipName": "mealIngredients",
+      "relationshipName": "ingradients",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "meals",
+      "otherEntityRelationshipName": "mealIngredients",
+      "ownerSide": false,
+      "relationshipName": "meals",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

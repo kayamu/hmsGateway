@@ -1,0 +1,430 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-invoice-details-heading"
+        data-cy="InvoiceDetailsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.home.createOrEditLabel"
+      >
+        Create or edit a Invoice Details
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.contactId" for="field_contactId">Contact Id</label>
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.cartId" for="field_cartId">Cart Id</label>
+          <input type="number" class="form-control" name="cartId" id="field_cartId" data-cy="cartId" formControlName="cartId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemId" for="field_itemId">Item Id</label>
+          <input type="number" class="form-control" name="itemId" id="field_itemId" data-cy="itemId" formControlName="itemId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemName" for="field_itemName">Item Name</label>
+          <input type="text" class="form-control" name="itemName" id="field_itemName" data-cy="itemName" formControlName="itemName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemCode" for="field_itemCode">Item Code</label>
+          <input type="text" class="form-control" name="itemCode" id="field_itemCode" data-cy="itemCode" formControlName="itemCode" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemType" for="field_itemType">Item Type</label>
+          <select class="form-control" name="itemType" formControlName="itemType" id="field_itemType" data-cy="itemType">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.ITEMTYPES.null' | translate }}</option>
+            <option *ngFor="let iTEMTYPES of iTEMTYPESValues" [value]="iTEMTYPES">
+              {{ 'hmsgatewayApp.ITEMTYPES.' + iTEMTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.paymentType" for="field_paymentType"
+            >Payment Type</label
+          >
+          <select class="form-control" name="paymentType" formControlName="paymentType" id="field_paymentType" data-cy="paymentType">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.PAYMENTTYPES.null' | translate }}</option>
+            <option *ngFor="let pAYMENTTYPES of pAYMENTTYPESValues" [value]="pAYMENTTYPES">
+              {{ 'hmsgatewayApp.PAYMENTTYPES.' + pAYMENTTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionStartingDate"
+            for="field_subscriptionStartingDate"
+            >Subscription Starting Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_subscriptionStartingDate"
+              data-cy="subscriptionStartingDate"
+              type="text"
+              class="form-control"
+              name="subscriptionStartingDate"
+              ngbDatepicker
+              #subscriptionStartingDateDp="ngbDatepicker"
+              formControlName="subscriptionStartingDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="subscriptionStartingDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionDurationWeeks"
+            for="field_subscriptionDurationWeeks"
+            >Subscription Duration Weeks</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="subscriptionDurationWeeks"
+            id="field_subscriptionDurationWeeks"
+            data-cy="subscriptionDurationWeeks"
+            formControlName="subscriptionDurationWeeks"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.detailAmount" for="field_detailAmount"
+            >Detail Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="detailAmount"
+            id="field_detailAmount"
+            data-cy="detailAmount"
+            formControlName="detailAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.lineNumber" for="field_lineNumber"
+            >Line Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lineNumber"
+            id="field_lineNumber"
+            data-cy="lineNumber"
+            formControlName="lineNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistId" for="field_nutritionistId"
+            >Nutritionist Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nutritionistId"
+            id="field_nutritionistId"
+            data-cy="nutritionistId"
+            formControlName="nutritionistId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalCost" for="field_totalCost">Total Cost</label>
+          <input type="number" class="form-control" name="totalCost" id="field_totalCost" data-cy="totalCost" formControlName="totalCost" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalProfit" for="field_totalProfit"
+            >Total Profit</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalProfit"
+            id="field_totalProfit"
+            data-cy="totalProfit"
+            formControlName="totalProfit"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistEarning"
+            for="field_nutritionistEarning"
+            >Nutritionist Earning</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nutritionistEarning"
+            id="field_nutritionistEarning"
+            data-cy="nutritionistEarning"
+            formControlName="nutritionistEarning"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistPercentage"
+            for="field_nutritionistPercentage"
+            >Nutritionist Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nutritionistPercentage"
+            id="field_nutritionistPercentage"
+            data-cy="nutritionistPercentage"
+            formControlName="nutritionistPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesAmount" for="field_fedaralTaxesAmount"
+            >Fedaral Taxes Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fedaralTaxesAmount"
+            id="field_fedaralTaxesAmount"
+            data-cy="fedaralTaxesAmount"
+            formControlName="fedaralTaxesAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesPercentage"
+            for="field_fedaralTaxesPercentage"
+            >Fedaral Taxes Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fedaralTaxesPercentage"
+            id="field_fedaralTaxesPercentage"
+            data-cy="fedaralTaxesPercentage"
+            formControlName="fedaralTaxesPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesAmount"
+            for="field_provintionalTaxesAmount"
+            >Provintional Taxes Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="provintionalTaxesAmount"
+            id="field_provintionalTaxesAmount"
+            data-cy="provintionalTaxesAmount"
+            formControlName="provintionalTaxesAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesPercentage"
+            for="field_provintionalTaxesPercentage"
+            >Provintional Taxes Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="provintionalTaxesPercentage"
+            id="field_provintionalTaxesPercentage"
+            data-cy="provintionalTaxesPercentage"
+            formControlName="provintionalTaxesPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesAmount" for="field_totalTaxesAmount"
+            >Total Taxes Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalTaxesAmount"
+            id="field_totalTaxesAmount"
+            data-cy="totalTaxesAmount"
+            formControlName="totalTaxesAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesPercentage"
+            for="field_totalTaxesPercentage"
+            >Total Taxes Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalTaxesPercentage"
+            id="field_totalTaxesPercentage"
+            data-cy="totalTaxesPercentage"
+            formControlName="totalTaxesPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountAmount" for="field_discountAmount"
+            >Discount Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="discountAmount"
+            id="field_discountAmount"
+            data-cy="discountAmount"
+            formControlName="discountAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountPercentage" for="field_discountPercentage"
+            >Discount Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="discountPercentage"
+            id="field_discountPercentage"
+            data-cy="discountPercentage"
+            formControlName="discountPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnCode" for="field_addOnCode"
+            >Add On Code</label
+          >
+          <input type="text" class="form-control" name="addOnCode" id="field_addOnCode" data-cy="addOnCode" formControlName="addOnCode" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnAmount" for="field_addOnAmount"
+            >Add On Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="addOnAmount"
+            id="field_addOnAmount"
+            data-cy="addOnAmount"
+            formControlName="addOnAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnPercentage" for="field_addOnPercentage"
+            >Add On Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="addOnPercentage"
+            id="field_addOnPercentage"
+            data-cy="addOnPercentage"
+            formControlName="addOnPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalAmount" for="field_totalAmount"
+            >Total Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalAmount"
+            id="field_totalAmount"
+            data-cy="totalAmount"
+            formControlName="totalAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subItems" for="field_subItems">Sub Items</label>
+          <select
+            class="form-control"
+            id="field_subItems"
+            data-cy="subItems"
+            multiple
+            name="subItems"
+            formControlName="subItems"
+            [compareWith]="compareSubItems"
+          >
+            <option [ngValue]="subItemsOption" *ngFor="let subItemsOption of subItemsSharedCollection">{{ subItemsOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

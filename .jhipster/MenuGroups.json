@@ -1,0 +1,128 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111174620",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "menu_groups",
+  "fields": [
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "salesPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "goal",
+      "fieldType": "GOALS",
+      "fieldValues": "LOSEFAT,MAINTAIN,BUILDMUCSLE"
+    },
+    {
+      "fieldName": "bodyType",
+      "fieldType": "BODYFATS",
+      "fieldValues": "LOW,MEDIUM,HIGH"
+    },
+    {
+      "fieldName": "activityLevelMin",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "activityLevelMax",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "weightMin",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "weightMax",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dailyKcalMin",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dailyKcalMax",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "targetWeightMin",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "targetWeightMax",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "UNITS",
+      "fieldValues": "KG (Kg),LB (lb)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "MenuGroups",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "ingredients",
+      "otherEntityRelationshipName": "menuGroups",
+      "ownerSide": true,
+      "relationshipName": "ingradients",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "menus",
+      "otherEntityRelationshipName": "menuGroups",
+      "ownerSide": true,
+      "relationshipName": "menus",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "imagesUrl",
+      "otherEntityRelationshipName": "menuGroups",
+      "ownerSide": true,
+      "relationshipName": "imagesUrls",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "nutriens",
+      "otherEntityRelationshipName": "menuGroups",
+      "relationshipName": "nutriens",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

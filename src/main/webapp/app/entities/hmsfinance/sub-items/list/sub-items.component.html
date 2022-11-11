@@ -1,0 +1,144 @@
+<div>
+  <h2 id="page-heading" data-cy="SubItemsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.home.title">Sub Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sub-items"
+        [routerLink]="['/sub-items/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.home.createLabel"> Create a new Sub Items </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="subItems?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.home.notFound">No Sub Items found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="subItems && subItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actualValue">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.actualValue">Actual Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentage">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.percentage">Percentage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseValue">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.baseValue">Base Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.type">Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="valueType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.valueType">Value Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="calculatedValue">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.calculatedValue">Calculated Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="templateItemId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.templateItemId">Template Item Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceSubItems.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subItems of subItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sub-items', subItems.id, 'view']">{{ subItems.id }}</a>
+          </td>
+          <td>{{ subItems.name }}</td>
+          <td>{{ subItems.actualValue }}</td>
+          <td>{{ subItems.percentage }}</td>
+          <td>{{ subItems.baseValue }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.DETAILTYPES.' + subItems.type }}">{{ subItems.type }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.VALUETYPES.' + subItems.valueType }}">{{ subItems.valueType }}</td>
+          <td>{{ subItems.calculatedValue }}</td>
+          <td>{{ subItems.templateItemId }}</td>
+          <td>{{ subItems.createdDate | formatMediumDate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/sub-items', subItems.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/sub-items', subItems.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(subItems)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

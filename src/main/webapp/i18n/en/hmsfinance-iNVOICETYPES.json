@@ -1,0 +1,11 @@
+{
+  "hmsgatewayApp": {
+    "INVOICETYPES": {
+      "null": "",
+      "PROPOSAL": "proposal",
+      "CANCELLED": "cancelled",
+      "BILLED": "billed",
+      "PAID": "paid"
+    }
+  }
+}

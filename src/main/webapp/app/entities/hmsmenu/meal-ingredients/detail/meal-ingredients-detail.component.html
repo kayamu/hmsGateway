@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="mealIngredients">
+      <h2 data-cy="mealIngredientsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.detail.title">Meal Ingredients</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ mealIngredients.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.name">Name</span></dt>
+        <dd>
+          <span>{{ mealIngredients.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.amount">Amount</span></dt>
+        <dd>
+          <span>{{ mealIngredients.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.unit">Unit</span></dt>
+        <dd>
+          <span>{{ mealIngredients.unit }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ mealIngredients.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.nutriens">Nutriens</span></dt>
+        <dd>
+          <div *ngIf="mealIngredients.nutriens">
+            <a [routerLink]="['/nutriens', mealIngredients.nutriens.id, 'view']">{{ mealIngredients.nutriens.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.ingradients">Ingradients</span></dt>
+        <dd>
+          <div *ngIf="mealIngredients.ingradients">
+            <a [routerLink]="['/ingredients', mealIngredients.ingradients.id, 'view']">{{ mealIngredients.ingradients.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/meal-ingredients', mealIngredients.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

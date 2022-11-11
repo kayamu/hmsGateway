@@ -1,0 +1,340 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-menu-groups-heading"
+        data-cy="MenuGroupsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.home.createOrEditLabel"
+      >
+        Create or edit a Menu Groups
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.contactId" for="field_contactId">Contact Id</label>
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.cost" for="field_cost">Cost</label>
+          <input type="number" class="form-control" name="cost" id="field_cost" data-cy="cost" formControlName="cost" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.salesPrice" for="field_salesPrice">Sales Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="salesPrice"
+            id="field_salesPrice"
+            data-cy="salesPrice"
+            formControlName="salesPrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.explanation" for="field_explanation">Explanation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="explanation"
+            id="field_explanation"
+            data-cy="explanation"
+            formControlName="explanation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.goal" for="field_goal">Goal</label>
+          <select class="form-control" name="goal" formControlName="goal" id="field_goal" data-cy="goal">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.GOALS.null' | translate }}</option>
+            <option *ngFor="let gOALS of gOALSValues" [value]="gOALS">{{ 'hmsgatewayApp.GOALS.' + gOALS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.bodyType" for="field_bodyType">Body Type</label>
+          <select class="form-control" name="bodyType" formControlName="bodyType" id="field_bodyType" data-cy="bodyType">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.BODYFATS.null' | translate }}</option>
+            <option *ngFor="let bODYFATS of bODYFATSValues" [value]="bODYFATS">
+              {{ 'hmsgatewayApp.BODYFATS.' + bODYFATS | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMin" for="field_activityLevelMin"
+            >Activity Level Min</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activityLevelMin"
+            id="field_activityLevelMin"
+            data-cy="activityLevelMin"
+            formControlName="activityLevelMin"
+          />
+          <div
+            *ngIf="
+              editForm.get('activityLevelMin')!.invalid &&
+              (editForm.get('activityLevelMin')!.dirty || editForm.get('activityLevelMin')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activityLevelMin')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 1 }"
+            >
+              This field should be at least 1.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activityLevelMin')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 10 }"
+            >
+              This field cannot be more than 10.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activityLevelMin')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMax" for="field_activityLevelMax"
+            >Activity Level Max</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activityLevelMax"
+            id="field_activityLevelMax"
+            data-cy="activityLevelMax"
+            formControlName="activityLevelMax"
+          />
+          <div
+            *ngIf="
+              editForm.get('activityLevelMax')!.invalid &&
+              (editForm.get('activityLevelMax')!.dirty || editForm.get('activityLevelMax')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activityLevelMax')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 1 }"
+            >
+              This field should be at least 1.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activityLevelMax')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 10 }"
+            >
+              This field cannot be more than 10.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activityLevelMax')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMin" for="field_weightMin">Weight Min</label>
+          <input type="number" class="form-control" name="weightMin" id="field_weightMin" data-cy="weightMin" formControlName="weightMin" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMax" for="field_weightMax">Weight Max</label>
+          <input type="number" class="form-control" name="weightMax" id="field_weightMax" data-cy="weightMax" formControlName="weightMax" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMin" for="field_dailyKcalMin"
+            >Daily Kcal Min</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="dailyKcalMin"
+            id="field_dailyKcalMin"
+            data-cy="dailyKcalMin"
+            formControlName="dailyKcalMin"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMax" for="field_dailyKcalMax"
+            >Daily Kcal Max</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="dailyKcalMax"
+            id="field_dailyKcalMax"
+            data-cy="dailyKcalMax"
+            formControlName="dailyKcalMax"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMin" for="field_targetWeightMin"
+            >Target Weight Min</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="targetWeightMin"
+            id="field_targetWeightMin"
+            data-cy="targetWeightMin"
+            formControlName="targetWeightMin"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMax" for="field_targetWeightMax"
+            >Target Weight Max</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="targetWeightMax"
+            id="field_targetWeightMax"
+            data-cy="targetWeightMax"
+            formControlName="targetWeightMax"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.unit" for="field_unit">Unit</label>
+          <select class="form-control" name="unit" formControlName="unit" id="field_unit" data-cy="unit">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.UNITS.null' | translate }}</option>
+            <option *ngFor="let uNITS of uNITSValues" [value]="uNITS">{{ 'hmsgatewayApp.UNITS.' + uNITS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.ingradients" for="field_ingradients">Ingradients</label>
+          <select
+            class="form-control"
+            id="field_ingradients"
+            data-cy="ingradients"
+            multiple
+            name="ingradients"
+            formControlName="ingradients"
+            [compareWith]="compareIngredients"
+          >
+            <option [ngValue]="ingredientsOption" *ngFor="let ingredientsOption of ingredientsSharedCollection">
+              {{ ingredientsOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.menus" for="field_menus">Menus</label>
+          <select
+            class="form-control"
+            id="field_menus"
+            data-cy="menus"
+            multiple
+            name="menus"
+            formControlName="menus"
+            [compareWith]="compareMenus"
+          >
+            <option [ngValue]="menusOption" *ngFor="let menusOption of menusSharedCollection">{{ menusOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.imagesUrls" for="field_imagesUrls">Images Urls</label>
+          <select
+            class="form-control"
+            id="field_imagesUrls"
+            data-cy="imagesUrls"
+            multiple
+            name="imagesUrls"
+            formControlName="imagesUrls"
+            [compareWith]="compareImagesUrl"
+          >
+            <option [ngValue]="imagesUrlOption" *ngFor="let imagesUrlOption of imagesUrlsSharedCollection">
+              {{ imagesUrlOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.nutriens" for="field_nutriens">Nutriens</label>
+          <select
+            class="form-control"
+            id="field_nutriens"
+            data-cy="nutriens"
+            name="nutriens"
+            formControlName="nutriens"
+            [compareWith]="compareNutriens"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="nutriensOption" *ngFor="let nutriensOption of nutriensSharedCollection">{{ nutriensOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+{
+  "applications": ["hmsgateway", "hmsnutritionist"],
+  "changelogDate": "20221111180220",
+  "clientRootFolder": "hmsnutritionist",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "menu_suggestions",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutritionistId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "menuGroupId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsnutritionist",
+  "name": "MenuSuggestions",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "consultings",
+      "otherEntityRelationshipName": "menuSuggestions",
+      "ownerSide": false,
+      "relationshipName": "consultings",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,56 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174920",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "templates",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ITEMTYPES",
+      "fieldValues": "PRODUCT (Product),SERVICE (Service)"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "Templates",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "items",
+      "otherEntityRelationshipName": "templates",
+      "relationshipName": "items",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "templateItems",
+      "otherEntityRelationshipName": "templates",
+      "ownerSide": true,
+      "relationshipName": "templateItems",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

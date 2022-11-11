@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="meals">
+      <h2 data-cy="mealsDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.detail.title">Meals</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ meals.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.name">Name</span></dt>
+        <dd>
+          <span>{{ meals.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ meals.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.imagesUrls">Images Urls</span></dt>
+        <dd>
+          <span *ngFor="let imagesUrls of meals.imagesUrls; let last = last">
+            <a [routerLink]="['/images-url', imagesUrls.id, 'view']">{{ imagesUrls.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.mealIngredients">Meal Ingredients</span></dt>
+        <dd>
+          <span *ngFor="let mealIngredients of meals.mealIngredients; let last = last">
+            <a [routerLink]="['/meal-ingredients', mealIngredients.id, 'view']">{{ mealIngredients.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.nutriens">Nutriens</span></dt>
+        <dd>
+          <div *ngIf="meals.nutriens">
+            <a [routerLink]="['/nutriens', meals.nutriens.id, 'view']">{{ meals.nutriens.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMeals.recipies">Recipies</span></dt>
+        <dd>
+          <div *ngIf="meals.recipies">
+            <a [routerLink]="['/recipies', meals.recipies.id, 'view']">{{ meals.recipies.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/meals', meals.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

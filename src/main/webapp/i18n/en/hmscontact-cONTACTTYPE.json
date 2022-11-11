@@ -1,0 +1,15 @@
+{
+  "hmsgatewayApp": {
+    "CONTACTTYPE": {
+      "null": "",
+      "CUSTOMER": "CUSTOMER",
+      "KITCHEN": "KITCHEN",
+      "NUTRITIONIST": "NUTRITIONIST",
+      "LOGISTIC": "LOGISTIC",
+      "OUTSOURCE": "OUTSOURCE",
+      "PARTHNER": "PARTHNER",
+      "SUBCONTRACTOR": "SUBCONTRACTOR",
+      "EMPLOYEE": "EMPLOYEE"
+    }
+  }
+}

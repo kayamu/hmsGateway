@@ -1,0 +1,9 @@
+{
+  "hmsgatewayApp": {
+    "PAYMENTTYPES": {
+      "null": "",
+      "IN": "IN",
+      "OUT": "OUT"
+    }
+  }
+}

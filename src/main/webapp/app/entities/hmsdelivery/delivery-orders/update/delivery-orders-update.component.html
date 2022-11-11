@@ -1,0 +1,273 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-delivery-orders-heading"
+        data-cy="DeliveryOrdersCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.home.createOrEditLabel"
+      >
+        Create or edit a Delivery Orders
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryId" for="field_deliveryId"
+            >Delivery Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="deliveryId"
+            id="field_deliveryId"
+            data-cy="deliveryId"
+            formControlName="deliveryId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.invoiceNumber" for="field_invoiceNumber"
+            >Invoice Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="invoiceNumber"
+            id="field_invoiceNumber"
+            data-cy="invoiceNumber"
+            formControlName="invoiceNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactId" for="field_contactId"
+            >Contact Id</label
+          >
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactName" for="field_contactName"
+            >Contact Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contactName"
+            id="field_contactName"
+            data-cy="contactName"
+            formControlName="contactName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactAddressId" for="field_contactAddressId"
+            >Contact Address Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="contactAddressId"
+            id="field_contactAddressId"
+            data-cy="contactAddressId"
+            formControlName="contactAddressId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.contactCartId" for="field_contactCartId"
+            >Contact Cart Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="contactCartId"
+            id="field_contactCartId"
+            data-cy="contactCartId"
+            formControlName="contactCartId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryDate" for="field_deliveryDate"
+            >Delivery Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_deliveryDate"
+              data-cy="deliveryDate"
+              type="text"
+              class="form-control"
+              name="deliveryDate"
+              ngbDatepicker
+              #deliveryDateDp="ngbDatepicker"
+              formControlName="deliveryDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="deliveryDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.requestDate" for="field_requestDate"
+            >Request Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_requestDate"
+              data-cy="requestDate"
+              type="text"
+              class="form-control"
+              name="requestDate"
+              ngbDatepicker
+              #requestDateDp="ngbDatepicker"
+              formControlName="requestDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="requestDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemId" for="field_menuItemId"
+            >Menu Item Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="menuItemId"
+            id="field_menuItemId"
+            data-cy="menuItemId"
+            formControlName="menuItemId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemName" for="field_menuItemName"
+            >Menu Item Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="menuItemName"
+            id="field_menuItemName"
+            data-cy="menuItemName"
+            formControlName="menuItemName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.menuItemCode" for="field_menuItemCode"
+            >Menu Item Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="menuItemCode"
+            id="field_menuItemCode"
+            data-cy="menuItemCode"
+            formControlName="menuItemCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.lineNumber" for="field_lineNumber"
+            >Line Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lineNumber"
+            id="field_lineNumber"
+            data-cy="lineNumber"
+            formControlName="lineNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.detail" for="field_detail">Detail</label>
+          <input type="text" class="form-control" name="detail" id="field_detail" data-cy="detail" formControlName="detail" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.message" for="field_message">Message</label>
+          <input type="text" class="form-control" name="message" id="field_message" data-cy="message" formControlName="message" />
+          <div *ngIf="editForm.get('message')!.invalid && (editForm.get('message')!.dirty || editForm.get('message')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('message')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 1024 }"
+            >
+              This field cannot be longer than 1024 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryOrders.deliveryTransactions" for="field_deliveryTransactions"
+            >Delivery Transactions</label
+          >
+          <select
+            class="form-control"
+            id="field_deliveryTransactions"
+            data-cy="deliveryTransactions"
+            multiple
+            name="deliveryTransactions"
+            formControlName="deliveryTransactions"
+            [compareWith]="compareDeliveryTransactions"
+          >
+            <option [ngValue]="deliveryTransactionsOption" *ngFor="let deliveryTransactionsOption of deliveryTransactionsSharedCollection">
+              {{ deliveryTransactionsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

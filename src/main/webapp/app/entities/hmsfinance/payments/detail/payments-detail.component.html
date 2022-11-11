@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="payments">
+      <h2 data-cy="paymentsDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.detail.title">Payments</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ payments.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.refNumber">Ref Number</span></dt>
+        <dd>
+          <span>{{ payments.refNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.paymentType">Payment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.PAYMENTTYPES.' + payments.paymentType }}">{{ payments.paymentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ payments.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ payments.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.operationDate">Operation Date</span></dt>
+        <dd>
+          <span>{{ payments.operationDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.amount">Amount</span></dt>
+        <dd>
+          <span>{{ payments.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.PAYMENTSTATUS.' + payments.status }}">{{ payments.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ payments.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinancePayments.invoices">Invoices</span></dt>
+        <dd>
+          <div *ngIf="payments.invoices">
+            <a [routerLink]="['/invoices', payments.invoices.id, 'view']">{{ payments.invoices.invoiceNumber }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payments', payments.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

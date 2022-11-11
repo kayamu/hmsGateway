@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="consultings">
+      <h2 data-cy="consultingsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.detail.title">Consultings</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ consultings.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.customerId">Customer Id</span></dt>
+        <dd>
+          <span>{{ consultings.customerId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.custmerName">Custmer Name</span></dt>
+        <dd>
+          <span>{{ consultings.custmerName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistId">Nutritionist Id</span></dt>
+        <dd>
+          <span>{{ consultings.nutritionistId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistName">Nutritionist Name</span></dt>
+        <dd>
+          <span>{{ consultings.nutritionistName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistNotes">Nutritionist Notes</span></dt>
+        <dd>
+          <span>{{ consultings.nutritionistNotes }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.lastStatus">Last Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.STATUS.' + consultings.lastStatus }}">{{ consultings.lastStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ consultings.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.epicrysis">Epicrysis</span></dt>
+        <dd>
+          <span *ngFor="let epicrysis of consultings.epicryses; let last = last">
+            <a [routerLink]="['/epicrysis', epicrysis.id, 'view']">{{ epicrysis.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.menuSuggestions">Menu Suggestions</span></dt>
+        <dd>
+          <span *ngFor="let menuSuggestions of consultings.menuSuggestions; let last = last">
+            <a [routerLink]="['/menu-suggestions', menuSuggestions.id, 'view']">{{ menuSuggestions.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.consultingStatus">Consulting Status</span></dt>
+        <dd>
+          <div *ngIf="consultings.consultingStatus">
+            <a [routerLink]="['/consulting-status', consultings.consultingStatus.id, 'view']">{{ consultings.consultingStatus.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/consultings', consultings.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoiceTransactions">
+      <h2 data-cy="invoiceTransactionsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.detail.title">Invoice Transactions</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ invoiceTransactions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.statusChangedDate">Status Changed Date</span></dt>
+        <dd>
+          <span>{{ invoiceTransactions.statusChangedDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.transactionDate">Transaction Date</span></dt>
+        <dd>
+          <span>{{ invoiceTransactions.transactionDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.INVOICETYPES.' + invoiceTransactions.type }}">{{ invoiceTransactions.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ invoiceTransactions.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceTransactions.invoices">Invoices</span></dt>
+        <dd>
+          <div *ngIf="invoiceTransactions.invoices">
+            <a [routerLink]="['/invoices', invoiceTransactions.invoices.id, 'view']">{{ invoiceTransactions.invoices.invoiceNumber }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoice-transactions', invoiceTransactions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

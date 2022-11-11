@@ -1,0 +1,43 @@
+{
+  "hmsgatewayApp": {
+    "hmscontactContactAddresses": {
+      "home": {
+        "title": "Contact Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contact Addresses",
+        "createOrEditLabel": "Create or edit a Contact Addresses",
+        "notFound": "No Contact Addresses found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Contact Addresses {{ id }}?"
+      },
+      "detail": {
+        "title": "Contact Addresses"
+      },
+      "id": "ID",
+      "name": "Name",
+      "bussinessName": "Bussiness Name",
+      "bussinessId": "Bussiness Id",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "province": "Province",
+      "detail": "Detail",
+      "active": "Active",
+      "contractStartDate": "Contract Start Date",
+      "agrrementId": "Agrrement Id",
+      "employmentType": "Employment Type",
+      "hourlyRate": "Hourly Rate",
+      "createdDate": "Created Date",
+      "contacts": "Contacts"
+    }
+  },
+  "hmscontactApp": {
+    "hmscontactContactAddresses": {
+      "created": "A new Contact Addresses is created with identifier {{ param }}",
+      "updated": "A Contact Addresses is updated with identifier {{ param }}",
+      "deleted": "A Contact Addresses is deleted with identifier {{ param }}"
+    }
+  }
+}

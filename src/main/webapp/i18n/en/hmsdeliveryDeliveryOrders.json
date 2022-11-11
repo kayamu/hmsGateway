@@ -1,0 +1,43 @@
+{
+  "hmsgatewayApp": {
+    "hmsdeliveryDeliveryOrders": {
+      "home": {
+        "title": "Delivery Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Delivery Orders",
+        "createOrEditLabel": "Create or edit a Delivery Orders",
+        "notFound": "No Delivery Orders found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Delivery Orders {{ id }}?"
+      },
+      "detail": {
+        "title": "Delivery Orders"
+      },
+      "id": "ID",
+      "deliveryId": "Delivery Id",
+      "invoiceNumber": "Invoice Number",
+      "contactId": "Contact Id",
+      "contactName": "Contact Name",
+      "contactAddressId": "Contact Address Id",
+      "contactCartId": "Contact Cart Id",
+      "deliveryDate": "Delivery Date",
+      "requestDate": "Request Date",
+      "menuItemId": "Menu Item Id",
+      "menuItemName": "Menu Item Name",
+      "menuItemCode": "Menu Item Code",
+      "lineNumber": "Line Number",
+      "detail": "Detail",
+      "message": "Message",
+      "createdDate": "Created Date",
+      "deliveryTransactions": "Delivery Transactions"
+    }
+  },
+  "hmsdeliveryApp": {
+    "hmsdeliveryDeliveryOrders": {
+      "created": "A new Delivery Orders is created with identifier {{ param }}",
+      "updated": "A Delivery Orders is updated with identifier {{ param }}",
+      "deleted": "A Delivery Orders is deleted with identifier {{ param }}"
+    }
+  }
+}

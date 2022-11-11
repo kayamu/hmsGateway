@@ -1,0 +1,176 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-condition-details-heading"
+        data-cy="ConditionDetailsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.home.createOrEditLabel"
+      >
+        Create or edit a Condition Details
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.explanation" for="field_explanation"
+            >Explanation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="explanation"
+            id="field_explanation"
+            data-cy="explanation"
+            formControlName="explanation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareField" for="field_compareField"
+            >Compare Field</label
+          >
+          <select class="form-control" name="compareField" formControlName="compareField" id="field_compareField" data-cy="compareField">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.FIELDS.null' | translate }}</option>
+            <option *ngFor="let fIELDS of fIELDSValues" [value]="fIELDS">{{ 'hmsgatewayApp.FIELDS.' + fIELDS | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.operator" for="field_operator">Operator</label>
+          <select class="form-control" name="operator" formControlName="operator" id="field_operator" data-cy="operator">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.OPERATORS.null' | translate }}</option>
+            <option *ngFor="let oPERATORS of oPERATORSValues" [value]="oPERATORS">
+              {{ 'hmsgatewayApp.OPERATORS.' + oPERATORS | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupIndex" for="field_groupIndex"
+            >Group Index</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="groupIndex"
+            id="field_groupIndex"
+            data-cy="groupIndex"
+            formControlName="groupIndex"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareValue" for="field_compareValue"
+            >Compare Value</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="compareValue"
+            id="field_compareValue"
+            data-cy="compareValue"
+            formControlName="compareValue"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.lineLogicType" for="field_lineLogicType"
+            >Line Logic Type</label
+          >
+          <select
+            class="form-control"
+            name="lineLogicType"
+            formControlName="lineLogicType"
+            id="field_lineLogicType"
+            data-cy="lineLogicType"
+          >
+            <option [ngValue]="null">{{ 'hmsgatewayApp.LOGICTYPES.null' | translate }}</option>
+            <option *ngFor="let lOGICTYPES of lOGICTYPESValues" [value]="lOGICTYPES">
+              {{ 'hmsgatewayApp.LOGICTYPES.' + lOGICTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupLogicType" for="field_groupLogicType"
+            >Group Logic Type</label
+          >
+          <select
+            class="form-control"
+            name="groupLogicType"
+            formControlName="groupLogicType"
+            id="field_groupLogicType"
+            data-cy="groupLogicType"
+          >
+            <option [ngValue]="null">{{ 'hmsgatewayApp.LOGICTYPES.null' | translate }}</option>
+            <option *ngFor="let lOGICTYPES of lOGICTYPESValues" [value]="lOGICTYPES">
+              {{ 'hmsgatewayApp.LOGICTYPES.' + lOGICTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.nextCondition" for="field_nextCondition"
+            >Next Condition</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nextCondition"
+            id="field_nextCondition"
+            data-cy="nextCondition"
+            formControlName="nextCondition"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

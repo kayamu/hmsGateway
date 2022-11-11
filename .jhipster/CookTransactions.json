@@ -1,0 +1,48 @@
+{
+  "applications": ["hmsgateway", "hmskitchen"],
+  "changelogDate": "20221111175820",
+  "clientRootFolder": "hmskitchen",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cook_transactions",
+  "fields": [
+    {
+      "fieldName": "kitchenId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "statusChangedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "transactionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "KITCHENTYPES",
+      "fieldValues": "PREPARING,ONTHEWAY,CANCELLED,READYTOPICKUP"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmskitchen",
+  "name": "CookTransactions",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cookOrders",
+      "otherEntityRelationshipName": "cookTransactions",
+      "ownerSide": false,
+      "relationshipName": "cookOrders",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

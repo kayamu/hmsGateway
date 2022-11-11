@@ -1,0 +1,11 @@
+{
+  "hmsgatewayApp": {
+    "KITCHENTYPES": {
+      "null": "",
+      "PREPARING": "PREPARING",
+      "ONTHEWAY": "ONTHEWAY",
+      "CANCELLED": "CANCELLED",
+      "READYTOPICKUP": "READYTOPICKUP"
+    }
+  }
+}

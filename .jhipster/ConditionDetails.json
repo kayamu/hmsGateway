@@ -1,0 +1,72 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111175020",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "condition_details",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "compareField",
+      "fieldType": "FIELDS",
+      "fieldValues": "NUTRITION,CONTACT,ITEMAMOUNT,ITEMTYPE"
+    },
+    {
+      "fieldName": "operator",
+      "fieldType": "OPERATORS",
+      "fieldValues": "EQUAL (equal),LESS (less),GRATER (grater),LESSEQUAL (lessEqual),GRATEREQUAL (graterEqual),NOTEQUAL (notEqual)"
+    },
+    {
+      "fieldName": "groupIndex",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "compareValue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lineLogicType",
+      "fieldType": "LOGICTYPES",
+      "fieldValues": "AND (and),OR (or)"
+    },
+    {
+      "fieldName": "groupLogicType",
+      "fieldType": "LOGICTYPES",
+      "fieldValues": "AND (and),OR (or)"
+    },
+    {
+      "fieldName": "nextCondition",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "ConditionDetails",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "conditions",
+      "otherEntityRelationshipName": "conditionDetails",
+      "ownerSide": false,
+      "relationshipName": "condition",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

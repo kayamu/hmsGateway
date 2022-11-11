@@ -1,0 +1,37 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuImagesUrl": {
+      "home": {
+        "title": "Images Urls",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Images Url",
+        "createOrEditLabel": "Create or edit a Images Url",
+        "notFound": "No Images Urls found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Images Url {{ id }}?"
+      },
+      "detail": {
+        "title": "Images Url"
+      },
+      "id": "ID",
+      "name": "Name",
+      "urlAddress": "Url Address",
+      "explanation": "Explanation",
+      "type": "Type",
+      "createdDate": "Created Date",
+      "menuGroups": "Menu Groups",
+      "menus": "Menus",
+      "meals": "Meals",
+      "ingredients": "Ingredients",
+      "recipe": "Recipe"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuImagesUrl": {
+      "created": "A new Images Url is created with identifier {{ param }}",
+      "updated": "A Images Url is updated with identifier {{ param }}",
+      "deleted": "A Images Url is deleted with identifier {{ param }}"
+    }
+  }
+}

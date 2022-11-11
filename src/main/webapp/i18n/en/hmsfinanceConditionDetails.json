@@ -1,0 +1,38 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceConditionDetails": {
+      "home": {
+        "title": "Condition Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Condition Details",
+        "createOrEditLabel": "Create or edit a Condition Details",
+        "notFound": "No Condition Details found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Condition Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Condition Details"
+      },
+      "id": "ID",
+      "name": "Name",
+      "explanation": "Explanation",
+      "compareField": "Compare Field",
+      "operator": "Operator",
+      "groupIndex": "Group Index",
+      "compareValue": "Compare Value",
+      "createdDate": "Created Date",
+      "lineLogicType": "Line Logic Type",
+      "groupLogicType": "Group Logic Type",
+      "nextCondition": "Next Condition",
+      "condition": "Condition"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceConditionDetails": {
+      "created": "A new Condition Details is created with identifier {{ param }}",
+      "updated": "A Condition Details is updated with identifier {{ param }}",
+      "deleted": "A Condition Details is deleted with identifier {{ param }}"
+    }
+  }
+}

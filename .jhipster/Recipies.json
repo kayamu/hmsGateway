@@ -1,0 +1,51 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111175520",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "recipies",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "recipe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "Recipies",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "meals",
+      "otherEntityRelationshipName": "recipies",
+      "relationshipName": "meal",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "imagesUrl",
+      "otherEntityRelationshipName": "recipe",
+      "ownerSide": true,
+      "relationshipName": "imagesUrls",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

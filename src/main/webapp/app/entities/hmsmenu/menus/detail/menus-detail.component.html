@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="menus">
+      <h2 data-cy="menusDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.detail.title">Menus</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ menus.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.name">Name</span></dt>
+        <dd>
+          <span>{{ menus.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.menuDay">Menu Day</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.DAYS.' + menus.menuDay }}">{{ menus.menuDay }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.menuTime">Menu Time</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.REPAST.' + menus.menuTime }}">{{ menus.menuTime }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ menus.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.cost">Cost</span></dt>
+        <dd>
+          <span>{{ menus.cost }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.salesPrice">Sales Price</span></dt>
+        <dd>
+          <span>{{ menus.salesPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ menus.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ menus.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.imagesUrls">Images Urls</span></dt>
+        <dd>
+          <span *ngFor="let imagesUrls of menus.imagesUrls; let last = last">
+            <a [routerLink]="['/images-url', imagesUrls.id, 'view']">{{ imagesUrls.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.meals">Meals</span></dt>
+        <dd>
+          <span *ngFor="let meals of menus.meals; let last = last">
+            <a [routerLink]="['/meals', meals.id, 'view']">{{ meals.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenus.nutriens">Nutriens</span></dt>
+        <dd>
+          <div *ngIf="menus.nutriens">
+            <a [routerLink]="['/nutriens', menus.nutriens.id, 'view']">{{ menus.nutriens.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/menus', menus.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

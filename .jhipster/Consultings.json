@@ -1,0 +1,73 @@
+{
+  "applications": ["hmsgateway", "hmsnutritionist"],
+  "changelogDate": "20221111175320",
+  "clientRootFolder": "hmsnutritionist",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "consultings",
+  "fields": [
+    {
+      "fieldName": "customerId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "custmerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutritionistId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nutritionistName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutritionistNotes",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "lastStatus",
+      "fieldType": "STATUS",
+      "fieldValues": "WAITING (waiting),ACCEPTED (accepted),CANCELLED (cancelled),TRANSFERED (transfered)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsnutritionist",
+  "name": "Consultings",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "epicrysis",
+      "otherEntityRelationshipName": "consultings",
+      "ownerSide": true,
+      "relationshipName": "epicrysis",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "menuSuggestions",
+      "otherEntityRelationshipName": "consultings",
+      "ownerSide": true,
+      "relationshipName": "menuSuggestions",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "consultingStatus",
+      "otherEntityRelationshipName": "consultings",
+      "relationshipName": "consultingStatus",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

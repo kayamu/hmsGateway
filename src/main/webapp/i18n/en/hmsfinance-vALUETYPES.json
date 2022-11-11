@@ -1,0 +1,9 @@
+{
+  "hmsgatewayApp": {
+    "VALUETYPES": {
+      "null": "",
+      "PERCENTAGE": "percentage",
+      "AMOUNT": "amount"
+    }
+  }
+}

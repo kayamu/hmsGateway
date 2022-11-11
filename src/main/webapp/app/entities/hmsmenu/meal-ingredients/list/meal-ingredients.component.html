@@ -1,0 +1,131 @@
+<div>
+  <h2 id="page-heading" data-cy="MealIngredientsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.home.title">Meal Ingredients</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-meal-ingredients"
+        [routerLink]="['/meal-ingredients/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.home.createLabel"> Create a new Meal Ingredients </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="mealIngredients?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.home.notFound">No Meal Ingredients found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="mealIngredients && mealIngredients.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="amount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.amount">Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unit">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.unit">Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutriens.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.nutriens">Nutriens</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ingradients.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMealIngredients.ingradients">Ingradients</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mealIngredients of mealIngredients; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/meal-ingredients', mealIngredients.id, 'view']">{{ mealIngredients.id }}</a>
+          </td>
+          <td>{{ mealIngredients.name }}</td>
+          <td>{{ mealIngredients.amount }}</td>
+          <td>{{ mealIngredients.unit }}</td>
+          <td>{{ mealIngredients.createdDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="mealIngredients.nutriens">
+              <a [routerLink]="['/nutriens', mealIngredients.nutriens.id, 'view']">{{ mealIngredients.nutriens.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mealIngredients.ingradients">
+              <a [routerLink]="['/ingredients', mealIngredients.ingradients.id, 'view']">{{ mealIngredients.ingradients.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/meal-ingredients', mealIngredients.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/meal-ingredients', mealIngredients.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(mealIngredients)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

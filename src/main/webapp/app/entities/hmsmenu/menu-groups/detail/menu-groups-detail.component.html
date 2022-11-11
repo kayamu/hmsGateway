@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="menuGroups">
+      <h2 data-cy="menuGroupsDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.detail.title">Menu Groups</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ menuGroups.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ menuGroups.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.name">Name</span></dt>
+        <dd>
+          <span>{{ menuGroups.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.cost">Cost</span></dt>
+        <dd>
+          <span>{{ menuGroups.cost }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.salesPrice">Sales Price</span></dt>
+        <dd>
+          <span>{{ menuGroups.salesPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ menuGroups.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.goal">Goal</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.GOALS.' + menuGroups.goal }}">{{ menuGroups.goal }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.bodyType">Body Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.BODYFATS.' + menuGroups.bodyType }}">{{ menuGroups.bodyType }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMin">Activity Level Min</span></dt>
+        <dd>
+          <span>{{ menuGroups.activityLevelMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMax">Activity Level Max</span></dt>
+        <dd>
+          <span>{{ menuGroups.activityLevelMax }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMin">Weight Min</span></dt>
+        <dd>
+          <span>{{ menuGroups.weightMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMax">Weight Max</span></dt>
+        <dd>
+          <span>{{ menuGroups.weightMax }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMin">Daily Kcal Min</span></dt>
+        <dd>
+          <span>{{ menuGroups.dailyKcalMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMax">Daily Kcal Max</span></dt>
+        <dd>
+          <span>{{ menuGroups.dailyKcalMax }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMin">Target Weight Min</span></dt>
+        <dd>
+          <span>{{ menuGroups.targetWeightMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMax">Target Weight Max</span></dt>
+        <dd>
+          <span>{{ menuGroups.targetWeightMax }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.unit">Unit</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.UNITS.' + menuGroups.unit }}">{{ menuGroups.unit }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ menuGroups.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.ingradients">Ingradients</span></dt>
+        <dd>
+          <span *ngFor="let ingradients of menuGroups.ingradients; let last = last">
+            <a [routerLink]="['/ingredients', ingradients.id, 'view']">{{ ingradients.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.menus">Menus</span></dt>
+        <dd>
+          <span *ngFor="let menus of menuGroups.menus; let last = last">
+            <a [routerLink]="['/menus', menus.id, 'view']">{{ menus.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.imagesUrls">Images Urls</span></dt>
+        <dd>
+          <span *ngFor="let imagesUrls of menuGroups.imagesUrls; let last = last">
+            <a [routerLink]="['/images-url', imagesUrls.id, 'view']">{{ imagesUrls.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.nutriens">Nutriens</span></dt>
+        <dd>
+          <div *ngIf="menuGroups.nutriens">
+            <a [routerLink]="['/nutriens', menuGroups.nutriens.id, 'view']">{{ menuGroups.nutriens.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/menu-groups', menuGroups.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

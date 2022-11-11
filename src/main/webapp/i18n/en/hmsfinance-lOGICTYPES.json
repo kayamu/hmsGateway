@@ -1,0 +1,9 @@
+{
+  "hmsgatewayApp": {
+    "LOGICTYPES": {
+      "null": "",
+      "AND": "and",
+      "OR": "or"
+    }
+  }
+}

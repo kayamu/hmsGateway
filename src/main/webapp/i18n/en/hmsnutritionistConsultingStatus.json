@@ -1,0 +1,30 @@
+{
+  "hmsgatewayApp": {
+    "hmsnutritionistConsultingStatus": {
+      "home": {
+        "title": "Consulting Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Consulting Status",
+        "createOrEditLabel": "Create or edit a Consulting Status",
+        "notFound": "No Consulting Statuses found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Consulting Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Consulting Status"
+      },
+      "id": "ID",
+      "nutritionistId": "Nutritionist Id",
+      "lastStatus": "Last Status",
+      "consultings": "Consultings"
+    }
+  },
+  "hmsnutritionistApp": {
+    "hmsnutritionistConsultingStatus": {
+      "created": "A new Consulting Status is created with identifier {{ param }}",
+      "updated": "A Consulting Status is updated with identifier {{ param }}",
+      "deleted": "A Consulting Status is deleted with identifier {{ param }}"
+    }
+  }
+}

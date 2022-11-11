@@ -1,0 +1,151 @@
+<div>
+  <h2 id="page-heading" data-cy="ConditionDetailsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.home.title">Condition Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-condition-details"
+        [routerLink]="['/condition-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.home.createLabel"> Create a new Condition Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="conditionDetails?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.home.notFound">No Condition Details found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="conditionDetails && conditionDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="explanation">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.explanation">Explanation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compareField">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareField">Compare Field</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="operator">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.operator">Operator</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="groupIndex">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupIndex">Group Index</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compareValue">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareValue">Compare Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lineLogicType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.lineLogicType">Line Logic Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="groupLogicType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupLogicType">Group Logic Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nextCondition">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.nextCondition">Next Condition</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conditionDetails of conditionDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/condition-details', conditionDetails.id, 'view']">{{ conditionDetails.id }}</a>
+          </td>
+          <td>{{ conditionDetails.name }}</td>
+          <td>{{ conditionDetails.explanation }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.FIELDS.' + conditionDetails.compareField }}">{{ conditionDetails.compareField }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.OPERATORS.' + conditionDetails.operator }}">{{ conditionDetails.operator }}</td>
+          <td>{{ conditionDetails.groupIndex }}</td>
+          <td>{{ conditionDetails.compareValue }}</td>
+          <td>{{ conditionDetails.createdDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.LOGICTYPES.' + conditionDetails.lineLogicType }}">{{ conditionDetails.lineLogicType }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.LOGICTYPES.' + conditionDetails.groupLogicType }}">{{ conditionDetails.groupLogicType }}</td>
+          <td>{{ conditionDetails.nextCondition }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/condition-details', conditionDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/condition-details', conditionDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(conditionDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

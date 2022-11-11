@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="templates">
+      <h2 data-cy="templatesDetailsHeading"><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.detail.title">Templates</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ templates.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.name">Name</span></dt>
+        <dd>
+          <span>{{ templates.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.ITEMTYPES.' + templates.type }}">{{ templates.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ templates.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.isActive">Is Active</span></dt>
+        <dd>
+          <span>{{ templates.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ templates.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.templateItems">Template Items</span></dt>
+        <dd>
+          <span *ngFor="let templateItems of templates.templateItems; let last = last">
+            <a [routerLink]="['/template-items', templateItems.id, 'view']">{{ templateItems.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/templates', templates.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

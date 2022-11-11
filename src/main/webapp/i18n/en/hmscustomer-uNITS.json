@@ -1,0 +1,9 @@
+{
+  "hmsgatewayApp": {
+    "UNITS": {
+      "null": "",
+      "KG": "Kg",
+      "LB": "lb"
+    }
+  }
+}

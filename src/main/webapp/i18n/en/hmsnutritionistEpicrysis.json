@@ -1,0 +1,34 @@
+{
+  "hmsgatewayApp": {
+    "hmsnutritionistEpicrysis": {
+      "home": {
+        "title": "Epicryses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Epicrysis",
+        "createOrEditLabel": "Create or edit a Epicrysis",
+        "notFound": "No Epicryses found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Epicrysis {{ id }}?"
+      },
+      "detail": {
+        "title": "Epicrysis"
+      },
+      "id": "ID",
+      "name": "Name",
+      "nutritionistId": "Nutritionist Id",
+      "customerId": "Customer Id",
+      "customerName": "Customer Name",
+      "nutritionistNotes": "Nutritionist Notes",
+      "createdDate": "Created Date",
+      "consultings": "Consultings"
+    }
+  },
+  "hmsnutritionistApp": {
+    "hmsnutritionistEpicrysis": {
+      "created": "A new Epicrysis is created with identifier {{ param }}",
+      "updated": "A Epicrysis is updated with identifier {{ param }}",
+      "deleted": "A Epicrysis is deleted with identifier {{ param }}"
+    }
+  }
+}

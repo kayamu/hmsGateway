@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contactAddresses">
+      <h2 data-cy="contactAddressesDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.detail.title"
+          >Entity translation missing for hmsgatewayApp.hmscontactContactAddresses.detail.title</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contactAddresses.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.name">Name</span></dt>
+        <dd>
+          <span>{{ contactAddresses.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessName">Bussiness Name</span></dt>
+        <dd>
+          <span>{{ contactAddresses.bussinessName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessId">Bussiness Id</span></dt>
+        <dd>
+          <span>{{ contactAddresses.bussinessId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address1">Address 1</span></dt>
+        <dd>
+          <span>{{ contactAddresses.address1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address2">Address 2</span></dt>
+        <dd>
+          <span>{{ contactAddresses.address2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.city">City</span></dt>
+        <dd>
+          <span>{{ contactAddresses.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.postalCode">Postal Code</span></dt>
+        <dd>
+          <span>{{ contactAddresses.postalCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.province">Province</span></dt>
+        <dd>
+          <span>{{ contactAddresses.province }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.detail">Detail</span></dt>
+        <dd>
+          <span>{{ contactAddresses.detail }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.active">Active</span></dt>
+        <dd>
+          <span>{{ contactAddresses.active }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.contractStartDate">Contract Start Date</span></dt>
+        <dd>
+          <span>{{ contactAddresses.contractStartDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.agrrementId">Agrrement Id</span></dt>
+        <dd>
+          <span>{{ contactAddresses.agrrementId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.employmentType">Employment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.EMPLOYMENTTYPES.' + contactAddresses.employmentType }}">{{
+            contactAddresses.employmentType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.hourlyRate">Hourly Rate</span></dt>
+        <dd>
+          <span>{{ contactAddresses.hourlyRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ contactAddresses.createdDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contact-addresses', contactAddresses.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

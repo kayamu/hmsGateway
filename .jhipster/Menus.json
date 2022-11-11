@@ -1,0 +1,84 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111175920",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "menus",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "menuDay",
+      "fieldType": "DAYS",
+      "fieldValues": "SUNDAY,MONDAY,TUESDAY,WEDENSDAY,THURSDAY,FRIDAY,SATURDAY"
+    },
+    {
+      "fieldName": "menuTime",
+      "fieldType": "REPAST",
+      "fieldValues": "BREAKFAST,LUNCH,DINNER,SNACK,OTHER"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "salesPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "Menus",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "imagesUrl",
+      "otherEntityRelationshipName": "menus",
+      "ownerSide": true,
+      "relationshipName": "imagesUrls",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "meals",
+      "otherEntityRelationshipName": "menus",
+      "ownerSide": true,
+      "relationshipName": "meals",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "nutriens",
+      "otherEntityRelationshipName": "menus",
+      "relationshipName": "nutriens",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "menuGroups",
+      "otherEntityRelationshipName": "menus",
+      "ownerSide": false,
+      "relationshipName": "menuGroups",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

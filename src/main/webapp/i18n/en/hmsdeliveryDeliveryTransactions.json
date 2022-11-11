@@ -1,0 +1,32 @@
+{
+  "hmsgatewayApp": {
+    "hmsdeliveryDeliveryTransactions": {
+      "home": {
+        "title": "Delivery Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Delivery Transactions",
+        "createOrEditLabel": "Create or edit a Delivery Transactions",
+        "notFound": "No Delivery Transactions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Delivery Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Delivery Transactions"
+      },
+      "id": "ID",
+      "statusChangedDate": "Status Changed Date",
+      "transactionDate": "Transaction Date",
+      "type": "Type",
+      "createdDate": "Created Date",
+      "deliveryOrders": "Delivery Orders"
+    }
+  },
+  "hmsdeliveryApp": {
+    "hmsdeliveryDeliveryTransactions": {
+      "created": "A new Delivery Transactions is created with identifier {{ param }}",
+      "updated": "A Delivery Transactions is updated with identifier {{ param }}",
+      "deleted": "A Delivery Transactions is deleted with identifier {{ param }}"
+    }
+  }
+}

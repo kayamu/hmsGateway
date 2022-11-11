@@ -1,0 +1,11 @@
+{
+  "hmsgatewayApp": {
+    "FIELDS": {
+      "null": "",
+      "NUTRITION": "NUTRITION",
+      "CONTACT": "CONTACT",
+      "ITEMAMOUNT": "ITEMAMOUNT",
+      "ITEMTYPE": "ITEMTYPE"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "hmsgatewayApp": {
+    "REPAST": {
+      "null": "",
+      "BREAKFAST": "BREAKFAST",
+      "LUNCH": "LUNCH",
+      "DINNER": "DINNER",
+      "SNACK": "SNACK",
+      "OTHER": "OTHER"
+    }
+  }
+}

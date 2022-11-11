@@ -1,0 +1,37 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceSubItems": {
+      "home": {
+        "title": "Sub Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sub Items",
+        "createOrEditLabel": "Create or edit a Sub Items",
+        "notFound": "No Sub Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Sub Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Sub Items"
+      },
+      "id": "ID",
+      "name": "Name",
+      "actualValue": "Actual Value",
+      "percentage": "Percentage",
+      "baseValue": "Base Value",
+      "type": "Type",
+      "valueType": "Value Type",
+      "calculatedValue": "Calculated Value",
+      "templateItemId": "Template Item Id",
+      "createdDate": "Created Date",
+      "invoiceDetail": "Invoice Detail"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceSubItems": {
+      "created": "A new Sub Items is created with identifier {{ param }}",
+      "updated": "A Sub Items is updated with identifier {{ param }}",
+      "deleted": "A Sub Items is deleted with identifier {{ param }}"
+    }
+  }
+}

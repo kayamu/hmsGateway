@@ -1,0 +1,41 @@
+{
+  "hmsgatewayApp": {
+    "hmscustomerCustomerHealths": {
+      "home": {
+        "title": "Customer Healths",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Customer Healths",
+        "createOrEditLabel": "Create or edit a Customer Healths",
+        "notFound": "No Customer Healths found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Customer Healths {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer Healths"
+      },
+      "id": "ID",
+      "name": "Name",
+      "contactId": "Contact Id",
+      "currentWeight": "Current Weight",
+      "currentHeight": "Current Height",
+      "measureUnit": "Measure Unit",
+      "activityLevel": "Activity Level",
+      "targetWeight": "Target Weight",
+      "targerCalorie": "Targer Calorie",
+      "targetBodyFat": "Target Body Fat",
+      "goal": "Goal",
+      "active": "Active",
+      "detail": "Detail",
+      "createdDate": "Created Date",
+      "allergens": "Allergens"
+    }
+  },
+  "hmscustomerApp": {
+    "hmscustomerCustomerHealths": {
+      "created": "A new Customer Healths is created with identifier {{ param }}",
+      "updated": "A Customer Healths is updated with identifier {{ param }}",
+      "deleted": "A Customer Healths is deleted with identifier {{ param }}"
+    }
+  }
+}

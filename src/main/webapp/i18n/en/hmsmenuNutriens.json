@@ -1,0 +1,38 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuNutriens": {
+      "home": {
+        "title": "Nutriens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nutriens",
+        "createOrEditLabel": "Create or edit a Nutriens",
+        "notFound": "No Nutriens found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Nutriens {{ id }}?"
+      },
+      "detail": {
+        "title": "Nutriens"
+      },
+      "id": "ID",
+      "name": "Name",
+      "protein": "Protein",
+      "carb": "Carb",
+      "fat": "Fat",
+      "kcal": "Kcal",
+      "createdDate": "Created Date",
+      "menuGroups": "Menu Groups",
+      "menus": "Menus",
+      "mealIngredients": "Meal Ingredients",
+      "meals": "Meals",
+      "ingredients": "Ingredients"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuNutriens": {
+      "created": "A new Nutriens is created with identifier {{ param }}",
+      "updated": "A Nutriens is updated with identifier {{ param }}",
+      "deleted": "A Nutriens is deleted with identifier {{ param }}"
+    }
+  }
+}

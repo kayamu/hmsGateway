@@ -1,0 +1,64 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174120",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "items",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "itemCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ITEMTYPES",
+      "fieldValues": "PRODUCT (Product),SERVICE (Service)"
+    },
+    {
+      "fieldName": "explain",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "Items",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "templates",
+      "otherEntityRelationshipName": "items",
+      "relationshipName": "templates",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

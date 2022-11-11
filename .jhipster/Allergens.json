@@ -1,0 +1,52 @@
+{
+  "applications": ["hmsgateway", "hmscustomer"],
+  "changelogDate": "20221111174520",
+  "clientRootFolder": "hmscustomer",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "allergens",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "ingradientId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "detail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmscustomer",
+  "name": "Allergens",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "customerHealths",
+      "otherEntityRelationshipName": "allergens",
+      "ownerSide": false,
+      "relationshipName": "customerHealths",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

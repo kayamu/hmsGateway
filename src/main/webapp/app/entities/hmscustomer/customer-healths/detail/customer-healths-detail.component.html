@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customerHealths">
+      <h2 data-cy="customerHealthsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.detail.title"
+          >Entity translation missing for hmsgatewayApp.hmscustomerCustomerHealths.detail.title</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customerHealths.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.name">Name</span></dt>
+        <dd>
+          <span>{{ customerHealths.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ customerHealths.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentWeight">Current Weight</span></dt>
+        <dd>
+          <span>{{ customerHealths.currentWeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentHeight">Current Height</span></dt>
+        <dd>
+          <span>{{ customerHealths.currentHeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.measureUnit">Measure Unit</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.UNITS.' + customerHealths.measureUnit }}">{{ customerHealths.measureUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.activityLevel">Activity Level</span></dt>
+        <dd>
+          <span>{{ customerHealths.activityLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetWeight">Target Weight</span></dt>
+        <dd>
+          <span>{{ customerHealths.targetWeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targerCalorie">Targer Calorie</span></dt>
+        <dd>
+          <span>{{ customerHealths.targerCalorie }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetBodyFat">Target Body Fat</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.BODYFATS.' + customerHealths.targetBodyFat }}">{{ customerHealths.targetBodyFat }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.goal">Goal</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.GOALS.' + customerHealths.goal }}">{{ customerHealths.goal }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.active">Active</span></dt>
+        <dd>
+          <span>{{ customerHealths.active }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.detail">Detail</span></dt>
+        <dd>
+          <span>{{ customerHealths.detail }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ customerHealths.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.allergens">Allergens</span></dt>
+        <dd>
+          <span *ngFor="let allergens of customerHealths.allergens; let last = last">
+            <a [routerLink]="['/allergens', allergens.id, 'view']">{{ allergens.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer-healths', customerHealths.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

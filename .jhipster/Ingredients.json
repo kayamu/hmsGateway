@@ -1,0 +1,58 @@
+{
+  "applications": ["hmsgateway", "hmsmenu"],
+  "changelogDate": "20221111175120",
+  "clientRootFolder": "hmsmenu",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "ingredients",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsmenu",
+  "name": "Ingredients",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "mealIngredients",
+      "otherEntityRelationshipName": "ingradients",
+      "relationshipName": "mealIngredients",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "imagesUrl",
+      "otherEntityRelationshipName": "ingredients",
+      "ownerSide": true,
+      "relationshipName": "imagesUrls",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "nutriens",
+      "otherEntityRelationshipName": "ingredients",
+      "relationshipName": "nutriens",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "menuGroups",
+      "otherEntityRelationshipName": "ingradients",
+      "ownerSide": false,
+      "relationshipName": "menuGroups",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,170 @@
+<div>
+  <h2 id="page-heading" data-cy="CookOrdersHeading">
+    <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.home.title">Cook Orders</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cook-orders"
+        [routerLink]="['/cook-orders/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.home.createLabel"> Create a new Cook Orders </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="cookOrders?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.home.notFound">No Cook Orders found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="cookOrders && cookOrders.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="kitchenId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.kitchenId">Kitchen Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="customerId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerId">Customer Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="customerCartId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerCartId">Customer Cart Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemId">Menu Item Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemName">Menu Item Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuItemCode">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemCode">Menu Item Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mealId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.mealId">Meal Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lineNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.lineNumber">Line Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="requestDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.requestDate">Request Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="message">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.message">Message</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cookTransactions.id">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.cookTransactions">Cook Transactions</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cookOrders of cookOrders; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cook-orders', cookOrders.id, 'view']">{{ cookOrders.id }}</a>
+          </td>
+          <td>{{ cookOrders.kitchenId }}</td>
+          <td>{{ cookOrders.customerId }}</td>
+          <td>{{ cookOrders.customerCartId }}</td>
+          <td>{{ cookOrders.menuItemId }}</td>
+          <td>{{ cookOrders.menuItemName }}</td>
+          <td>{{ cookOrders.menuItemCode }}</td>
+          <td>{{ cookOrders.mealId }}</td>
+          <td>{{ cookOrders.lineNumber }}</td>
+          <td>{{ cookOrders.requestDate | formatMediumDate }}</td>
+          <td>{{ cookOrders.message }}</td>
+          <td>{{ cookOrders.createdDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let cookTransactions of cookOrders.cookTransactions; let last = last">
+              <a class="form-control-static" [routerLink]="['/cook-transactions', cookTransactions.id, 'view']">{{ cookTransactions.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cook-orders', cookOrders.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cook-orders', cookOrders.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(cookOrders)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

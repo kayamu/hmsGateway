@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="ConsultingsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.home.title">Consultings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-consultings"
+        [routerLink]="['/consultings/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.home.createLabel"> Create a new Consultings </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="consultings?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.home.notFound">No Consultings found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="consultings && consultings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="customerId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.customerId">Customer Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="custmerName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.custmerName">Custmer Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistId">Nutritionist Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistName">Nutritionist Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutritionistNotes">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.nutritionistNotes">Nutritionist Notes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastStatus">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.lastStatus">Last Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="epicrysis.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.epicrysis">Epicrysis</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menuSuggestions.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.menuSuggestions">Menu Suggestions</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="consultingStatus.id">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultings.consultingStatus">Consulting Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consultings of consultings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/consultings', consultings.id, 'view']">{{ consultings.id }}</a>
+          </td>
+          <td>{{ consultings.customerId }}</td>
+          <td>{{ consultings.custmerName }}</td>
+          <td>{{ consultings.nutritionistId }}</td>
+          <td>{{ consultings.nutritionistName }}</td>
+          <td>{{ consultings.nutritionistNotes }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.STATUS.' + consultings.lastStatus }}">{{ consultings.lastStatus }}</td>
+          <td>{{ consultings.createdDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let epicrysis of consultings.epicryses; let last = last">
+              <a class="form-control-static" [routerLink]="['/epicrysis', epicrysis.id, 'view']">{{ epicrysis.name }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let menuSuggestions of consultings.menuSuggestions; let last = last">
+              <a class="form-control-static" [routerLink]="['/menu-suggestions', menuSuggestions.id, 'view']">{{ menuSuggestions.name }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <div *ngIf="consultings.consultingStatus">
+              <a [routerLink]="['/consulting-status', consultings.consultingStatus.id, 'view']">{{ consultings.consultingStatus.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/consultings', consultings.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/consultings', consultings.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(consultings)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

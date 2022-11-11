@@ -1,0 +1,37 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceItems": {
+      "home": {
+        "title": "Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Items",
+        "createOrEditLabel": "Create or edit a Items",
+        "notFound": "No Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Items"
+      },
+      "id": "ID",
+      "name": "Name",
+      "itemId": "Item Id",
+      "itemCode": "Item Code",
+      "type": "Type",
+      "explain": "Explain",
+      "cost": "Cost",
+      "price": "Price",
+      "isActive": "Is Active",
+      "createdDate": "Created Date",
+      "templates": "Templates"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceItems": {
+      "created": "A new Items is created with identifier {{ param }}",
+      "updated": "A Items is updated with identifier {{ param }}",
+      "deleted": "A Items is deleted with identifier {{ param }}"
+    }
+  }
+}

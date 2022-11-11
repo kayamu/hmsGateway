@@ -1,0 +1,38 @@
+{
+  "hmsgatewayApp": {
+    "hmscontactContacts": {
+      "home": {
+        "title": "Contacts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contacts",
+        "createOrEditLabel": "Create or edit a Contacts",
+        "notFound": "No Contacts found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Contacts {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacts"
+      },
+      "id": "ID",
+      "userID": "User ID",
+      "type": "Type",
+      "name": "Name",
+      "hstNumber": "Hst Number",
+      "detail": "Detail",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": "Gender",
+      "birthdate": "Birthdate",
+      "createdDate": "Created Date",
+      "contactAddresses": "Contact Addresses"
+    }
+  },
+  "hmscontactApp": {
+    "hmscontactContacts": {
+      "created": "A new Contacts is created with identifier {{ param }}",
+      "updated": "A Contacts is updated with identifier {{ param }}",
+      "deleted": "A Contacts is deleted with identifier {{ param }}"
+    }
+  }
+}

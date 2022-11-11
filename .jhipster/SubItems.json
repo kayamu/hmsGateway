@@ -1,0 +1,65 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111175420",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "sub_items",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "actualValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "baseValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "DETAILTYPES",
+      "fieldValues": "EXPENSES (expenses),DISCOUNT (discount),NUTRITIONPAYMENT (nutritionPayment),TAXES (taxes),PROVINCIALTAXES (provincialTaxes),FEDERALTAXES (federalTaxes)"
+    },
+    {
+      "fieldName": "valueType",
+      "fieldType": "VALUETYPES",
+      "fieldValues": "PERCENTAGE (percentage),AMOUNT (amount)"
+    },
+    {
+      "fieldName": "calculatedValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "templateItemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "SubItems",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "invoiceDetails",
+      "otherEntityRelationshipName": "subItems",
+      "ownerSide": false,
+      "relationshipName": "invoiceDetail",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

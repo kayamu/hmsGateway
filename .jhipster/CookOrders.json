@@ -1,0 +1,73 @@
+{
+  "applications": ["hmsgateway", "hmskitchen"],
+  "changelogDate": "20221111173820",
+  "clientRootFolder": "hmskitchen",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cook_orders",
+  "fields": [
+    {
+      "fieldName": "kitchenId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerCartId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "menuItemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "menuItemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "menuItemCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mealId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lineNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "requestDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmskitchen",
+  "name": "CookOrders",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cookTransactions",
+      "otherEntityRelationshipName": "cookOrders",
+      "ownerSide": true,
+      "relationshipName": "cookTransactions",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

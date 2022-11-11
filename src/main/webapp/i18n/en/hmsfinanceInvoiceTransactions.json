@@ -1,0 +1,32 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceInvoiceTransactions": {
+      "home": {
+        "title": "Invoice Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Invoice Transactions",
+        "createOrEditLabel": "Create or edit a Invoice Transactions",
+        "notFound": "No Invoice Transactions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Invoice Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Transactions"
+      },
+      "id": "ID",
+      "statusChangedDate": "Status Changed Date",
+      "transactionDate": "Transaction Date",
+      "type": "Type",
+      "createdDate": "Created Date",
+      "invoices": "Invoices"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceInvoiceTransactions": {
+      "created": "A new Invoice Transactions is created with identifier {{ param }}",
+      "updated": "A Invoice Transactions is updated with identifier {{ param }}",
+      "deleted": "A Invoice Transactions is deleted with identifier {{ param }}"
+    }
+  }
+}

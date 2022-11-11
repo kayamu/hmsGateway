@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payments-heading"
+        data-cy="PaymentsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsfinancePayments.home.createOrEditLabel"
+      >
+        Create or edit a Payments
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.refNumber" for="field_refNumber">Ref Number</label>
+          <input type="text" class="form-control" name="refNumber" id="field_refNumber" data-cy="refNumber" formControlName="refNumber" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.paymentType" for="field_paymentType">Payment Type</label>
+          <select class="form-control" name="paymentType" formControlName="paymentType" id="field_paymentType" data-cy="paymentType">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.PAYMENTTYPES.null' | translate }}</option>
+            <option *ngFor="let pAYMENTTYPES of pAYMENTTYPESValues" [value]="pAYMENTTYPES">
+              {{ 'hmsgatewayApp.PAYMENTTYPES.' + pAYMENTTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.contactId" for="field_contactId">Contact Id</label>
+          <input type="number" class="form-control" name="contactId" id="field_contactId" data-cy="contactId" formControlName="contactId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.explanation" for="field_explanation">Explanation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="explanation"
+            id="field_explanation"
+            data-cy="explanation"
+            formControlName="explanation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.operationDate" for="field_operationDate"
+            >Operation Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_operationDate"
+              data-cy="operationDate"
+              type="text"
+              class="form-control"
+              name="operationDate"
+              ngbDatepicker
+              #operationDateDp="ngbDatepicker"
+              formControlName="operationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="operationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.PAYMENTSTATUS.null' | translate }}</option>
+            <option *ngFor="let pAYMENTSTATUS of pAYMENTSTATUSValues" [value]="pAYMENTSTATUS">
+              {{ 'hmsgatewayApp.PAYMENTSTATUS.' + pAYMENTSTATUS | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsfinancePayments.invoices" for="field_invoices">Invoices</label>
+          <select
+            class="form-control"
+            id="field_invoices"
+            data-cy="invoices"
+            name="invoices"
+            formControlName="invoices"
+            [compareWith]="compareInvoices"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="invoicesOption" *ngFor="let invoicesOption of invoicesSharedCollection">
+              {{ invoicesOption.invoiceNumber }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

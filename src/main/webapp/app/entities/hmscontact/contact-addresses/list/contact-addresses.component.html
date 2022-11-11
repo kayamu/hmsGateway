@@ -1,0 +1,188 @@
+<div>
+  <h2 id="page-heading" data-cy="ContactAddressesHeading">
+    <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.home.title">Contact Addresses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-contact-addresses"
+        [routerLink]="['/contact-addresses/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.home.createLabel"> Create a new Contact Addresses </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="contactAddresses?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.home.notFound">No Contact Addresses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="contactAddresses && contactAddresses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bussinessName">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessName">Bussiness Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bussinessId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessId">Bussiness Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address1">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address1">Address 1</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address2">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address2">Address 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="city">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.city">City</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postalCode">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.postalCode">Postal Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="province">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.province">Province</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detail">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.detail">Detail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="active">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.active">Active</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contractStartDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.contractStartDate">Contract Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="agrrementId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.agrrementId">Agrrement Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="employmentType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.employmentType">Employment Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hourlyRate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.hourlyRate">Hourly Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contactAddresses of contactAddresses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/contact-addresses', contactAddresses.id, 'view']">{{ contactAddresses.id }}</a>
+          </td>
+          <td>{{ contactAddresses.name }}</td>
+          <td>{{ contactAddresses.bussinessName }}</td>
+          <td>{{ contactAddresses.bussinessId }}</td>
+          <td>{{ contactAddresses.address1 }}</td>
+          <td>{{ contactAddresses.address2 }}</td>
+          <td>{{ contactAddresses.city }}</td>
+          <td>{{ contactAddresses.postalCode }}</td>
+          <td>{{ contactAddresses.province }}</td>
+          <td>{{ contactAddresses.detail }}</td>
+          <td>{{ contactAddresses.active }}</td>
+          <td>{{ contactAddresses.contractStartDate | formatMediumDate }}</td>
+          <td>{{ contactAddresses.agrrementId }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.EMPLOYMENTTYPES.' + contactAddresses.employmentType }}">
+            {{ contactAddresses.employmentType }}
+          </td>
+          <td>{{ contactAddresses.hourlyRate }}</td>
+          <td>{{ contactAddresses.createdDate | formatMediumDate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/contact-addresses', contactAddresses.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/contact-addresses', contactAddresses.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(contactAddresses)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

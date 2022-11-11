@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="consultingStatus">
+      <h2 data-cy="consultingStatusDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultingStatus.detail.title">Consulting Status</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ consultingStatus.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultingStatus.nutritionistId">Nutritionist Id</span></dt>
+        <dd>
+          <span>{{ consultingStatus.nutritionistId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsnutritionistConsultingStatus.lastStatus">Last Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.STATUS.' + consultingStatus.lastStatus }}">{{ consultingStatus.lastStatus }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/consulting-status', consultingStatus.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+  "hmsgatewayApp": {
+    "hmsmenuMenus": {
+      "home": {
+        "title": "Menus",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Menus",
+        "createOrEditLabel": "Create or edit a Menus",
+        "notFound": "No Menus found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Menus {{ id }}?"
+      },
+      "detail": {
+        "title": "Menus"
+      },
+      "id": "ID",
+      "name": "Name",
+      "menuDay": "Menu Day",
+      "menuTime": "Menu Time",
+      "contactId": "Contact Id",
+      "cost": "Cost",
+      "salesPrice": "Sales Price",
+      "explanation": "Explanation",
+      "createdDate": "Created Date",
+      "imagesUrls": "Images Urls",
+      "meals": "Meals",
+      "nutriens": "Nutriens",
+      "menuGroups": "Menu Groups"
+    }
+  },
+  "hmsmenuApp": {
+    "hmsmenuMenus": {
+      "created": "A new Menus is created with identifier {{ param }}",
+      "updated": "A Menus is updated with identifier {{ param }}",
+      "deleted": "A Menus is deleted with identifier {{ param }}"
+    }
+  }
+}

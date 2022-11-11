@@ -1,0 +1,109 @@
+<div>
+  <h2 id="page-heading" data-cy="DeliveryTransactionsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.home.title">Delivery Transactions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-delivery-transactions"
+        [routerLink]="['/delivery-transactions/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.home.createLabel"> Create a new Delivery Transactions </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="deliveryTransactions?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.home.notFound">No Delivery Transactions found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="deliveryTransactions && deliveryTransactions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="statusChangedDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.statusChangedDate">Status Changed Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="transactionDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.transactionDate">Transaction Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.type">Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deliveryTransactions of deliveryTransactions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/delivery-transactions', deliveryTransactions.id, 'view']">{{ deliveryTransactions.id }}</a>
+          </td>
+          <td>{{ deliveryTransactions.statusChangedDate | formatMediumDate }}</td>
+          <td>{{ deliveryTransactions.transactionDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.DELIVERYTYPES.' + deliveryTransactions.type }}">{{ deliveryTransactions.type }}</td>
+          <td>{{ deliveryTransactions.createdDate | formatMediumDate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/delivery-transactions', deliveryTransactions.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/delivery-transactions', deliveryTransactions.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(deliveryTransactions)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

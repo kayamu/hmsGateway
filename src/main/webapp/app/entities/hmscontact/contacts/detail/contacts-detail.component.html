@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contacts">
+      <h2 data-cy="contactsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmscontactContacts.detail.title"
+          >Entity translation missing for hmsgatewayApp.hmscontactContacts.detail.title</span
+        >
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contacts.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.userID">User ID</span></dt>
+        <dd>
+          <span>{{ contacts.userID }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.CONTACTTYPE.' + contacts.type }}">{{ contacts.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.name">Name</span></dt>
+        <dd>
+          <span>{{ contacts.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.hstNumber">Hst Number</span></dt>
+        <dd>
+          <span>{{ contacts.hstNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.detail">Detail</span></dt>
+        <dd>
+          <span>{{ contacts.detail }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.email">Email</span></dt>
+        <dd>
+          <span>{{ contacts.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.phone">Phone</span></dt>
+        <dd>
+          <span>{{ contacts.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.gender">Gender</span></dt>
+        <dd>
+          <span>{{ contacts.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.birthdate">Birthdate</span></dt>
+        <dd>
+          <span>{{ contacts.birthdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ contacts.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmscontactContacts.contactAddresses">Contact Addresses</span></dt>
+        <dd>
+          <span *ngFor="let contactAddresses of contacts.contactAddresses; let last = last">
+            <a [routerLink]="['/contact-addresses', contactAddresses.id, 'view']">{{ contactAddresses.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contacts', contacts.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

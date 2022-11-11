@@ -1,0 +1,9 @@
+{
+  "hmsgatewayApp": {
+    "ITEMTYPES": {
+      "null": "",
+      "PRODUCT": "Product",
+      "SERVICE": "Service"
+    }
+  }
+}

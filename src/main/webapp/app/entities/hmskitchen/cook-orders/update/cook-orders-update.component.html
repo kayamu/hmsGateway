@@ -1,0 +1,200 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-cook-orders-heading"
+        data-cy="CookOrdersCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.home.createOrEditLabel"
+      >
+        Create or edit a Cook Orders
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.kitchenId" for="field_kitchenId">Kitchen Id</label>
+          <input type="number" class="form-control" name="kitchenId" id="field_kitchenId" data-cy="kitchenId" formControlName="kitchenId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerId" for="field_customerId">Customer Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="customerId"
+            id="field_customerId"
+            data-cy="customerId"
+            formControlName="customerId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.customerCartId" for="field_customerCartId"
+            >Customer Cart Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="customerCartId"
+            id="field_customerCartId"
+            data-cy="customerCartId"
+            formControlName="customerCartId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemId" for="field_menuItemId">Menu Item Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="menuItemId"
+            id="field_menuItemId"
+            data-cy="menuItemId"
+            formControlName="menuItemId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemName" for="field_menuItemName"
+            >Menu Item Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="menuItemName"
+            id="field_menuItemName"
+            data-cy="menuItemName"
+            formControlName="menuItemName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.menuItemCode" for="field_menuItemCode"
+            >Menu Item Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="menuItemCode"
+            id="field_menuItemCode"
+            data-cy="menuItemCode"
+            formControlName="menuItemCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.mealId" for="field_mealId">Meal Id</label>
+          <input type="number" class="form-control" name="mealId" id="field_mealId" data-cy="mealId" formControlName="mealId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.lineNumber" for="field_lineNumber">Line Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="lineNumber"
+            id="field_lineNumber"
+            data-cy="lineNumber"
+            formControlName="lineNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.requestDate" for="field_requestDate"
+            >Request Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_requestDate"
+              data-cy="requestDate"
+              type="text"
+              class="form-control"
+              name="requestDate"
+              ngbDatepicker
+              #requestDateDp="ngbDatepicker"
+              formControlName="requestDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="requestDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.message" for="field_message">Message</label>
+          <input type="text" class="form-control" name="message" id="field_message" data-cy="message" formControlName="message" />
+          <div *ngIf="editForm.get('message')!.invalid && (editForm.get('message')!.dirty || editForm.get('message')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('message')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 1024 }"
+            >
+              This field cannot be longer than 1024 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="hmsgatewayApp.hmskitchenCookOrders.cookTransactions" for="field_cookTransactions">Cook Transactions</label>
+          <select
+            class="form-control"
+            id="field_cookTransactions"
+            data-cy="cookTransactions"
+            multiple
+            name="cookTransactions"
+            formControlName="cookTransactions"
+            [compareWith]="compareCookTransactions"
+          >
+            <option [ngValue]="cookTransactionsOption" *ngFor="let cookTransactionsOption of cookTransactionsSharedCollection">
+              {{ cookTransactionsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

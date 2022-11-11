@@ -1,0 +1,53 @@
+{
+  "applications": ["hmsgateway", "hmsnutritionist"],
+  "changelogDate": "20221111180120",
+  "clientRootFolder": "hmsnutritionist",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "epicrysis",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutritionistId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutritionistNotes",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsnutritionist",
+  "name": "Epicrysis",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "consultings",
+      "otherEntityRelationshipName": "epicrysis",
+      "ownerSide": false,
+      "relationshipName": "consultings",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

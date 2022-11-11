@@ -1,0 +1,37 @@
+{
+  "hmsgatewayApp": {
+    "hmsnutritionistConsultings": {
+      "home": {
+        "title": "Consultings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Consultings",
+        "createOrEditLabel": "Create or edit a Consultings",
+        "notFound": "No Consultings found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Consultings {{ id }}?"
+      },
+      "detail": {
+        "title": "Consultings"
+      },
+      "id": "ID",
+      "customerId": "Customer Id",
+      "custmerName": "Custmer Name",
+      "nutritionistId": "Nutritionist Id",
+      "nutritionistName": "Nutritionist Name",
+      "nutritionistNotes": "Nutritionist Notes",
+      "lastStatus": "Last Status",
+      "createdDate": "Created Date",
+      "epicrysis": "Epicrysis",
+      "menuSuggestions": "Menu Suggestions",
+      "consultingStatus": "Consulting Status"
+    }
+  },
+  "hmsnutritionistApp": {
+    "hmsnutritionistConsultings": {
+      "created": "A new Consultings is created with identifier {{ param }}",
+      "updated": "A Consultings is updated with identifier {{ param }}",
+      "deleted": "A Consultings is deleted with identifier {{ param }}"
+    }
+  }
+}

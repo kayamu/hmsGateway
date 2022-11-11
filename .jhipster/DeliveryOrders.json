@@ -1,0 +1,89 @@
+{
+  "applications": ["hmsgateway", "hmsdelivery"],
+  "changelogDate": "20221111180020",
+  "clientRootFolder": "hmsdelivery",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "delivery_orders",
+  "fields": [
+    {
+      "fieldName": "deliveryId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "invoiceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactAddressId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactCartId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "deliveryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "requestDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "menuItemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "menuItemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "menuItemCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lineNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "detail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsdelivery",
+  "name": "DeliveryOrders",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deliveryTransactions",
+      "otherEntityRelationshipName": "deliveryOrders",
+      "ownerSide": true,
+      "relationshipName": "deliveryTransactions",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

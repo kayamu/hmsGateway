@@ -1,0 +1,58 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceInvoiceDetails": {
+      "home": {
+        "title": "Invoice Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Invoice Details",
+        "createOrEditLabel": "Create or edit a Invoice Details",
+        "notFound": "No Invoice Details found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Invoice Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Details"
+      },
+      "id": "ID",
+      "contactId": "Contact Id",
+      "cartId": "Cart Id",
+      "itemId": "Item Id",
+      "itemName": "Item Name",
+      "itemCode": "Item Code",
+      "itemType": "Item Type",
+      "paymentType": "Payment Type",
+      "subscriptionStartingDate": "Subscription Starting Date",
+      "subscriptionDurationWeeks": "Subscription Duration Weeks",
+      "detailAmount": "Detail Amount",
+      "lineNumber": "Line Number",
+      "nutritionistId": "Nutritionist Id",
+      "totalCost": "Total Cost",
+      "totalProfit": "Total Profit",
+      "nutritionistEarning": "Nutritionist Earning",
+      "nutritionistPercentage": "Nutritionist Percentage",
+      "fedaralTaxesAmount": "Fedaral Taxes Amount",
+      "fedaralTaxesPercentage": "Fedaral Taxes Percentage",
+      "provintionalTaxesAmount": "Provintional Taxes Amount",
+      "provintionalTaxesPercentage": "Provintional Taxes Percentage",
+      "totalTaxesAmount": "Total Taxes Amount",
+      "totalTaxesPercentage": "Total Taxes Percentage",
+      "discountAmount": "Discount Amount",
+      "discountPercentage": "Discount Percentage",
+      "addOnCode": "Add On Code",
+      "addOnAmount": "Add On Amount",
+      "addOnPercentage": "Add On Percentage",
+      "totalAmount": "Total Amount",
+      "createdDate": "Created Date",
+      "subItems": "Sub Items",
+      "invoices": "Invoices"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceInvoiceDetails": {
+      "created": "A new Invoice Details is created with identifier {{ param }}",
+      "updated": "A Invoice Details is updated with identifier {{ param }}",
+      "deleted": "A Invoice Details is deleted with identifier {{ param }}"
+    }
+  }
+}

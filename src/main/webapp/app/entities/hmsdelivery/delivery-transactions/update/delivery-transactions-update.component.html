@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-delivery-transactions-heading"
+        data-cy="DeliveryTransactionsCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.home.createOrEditLabel"
+      >
+        Create or edit a Delivery Transactions
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.statusChangedDate"
+            for="field_statusChangedDate"
+            >Status Changed Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_statusChangedDate"
+              data-cy="statusChangedDate"
+              type="text"
+              class="form-control"
+              name="statusChangedDate"
+              ngbDatepicker
+              #statusChangedDateDp="ngbDatepicker"
+              formControlName="statusChangedDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="statusChangedDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.transactionDate" for="field_transactionDate"
+            >Transaction Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_transactionDate"
+              data-cy="transactionDate"
+              type="text"
+              class="form-control"
+              name="transactionDate"
+              ngbDatepicker
+              #transactionDateDp="ngbDatepicker"
+              formControlName="transactionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="transactionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'hmsgatewayApp.DELIVERYTYPES.null' | translate }}</option>
+            <option *ngFor="let dELIVERYTYPES of dELIVERYTYPESValues" [value]="dELIVERYTYPES">
+              {{ 'hmsgatewayApp.DELIVERYTYPES.' + dELIVERYTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmsdeliveryDeliveryTransactions.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

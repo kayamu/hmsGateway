@@ -1,0 +1,11 @@
+{
+  "hmsgatewayApp": {
+    "DELIVERYTYPES": {
+      "null": "",
+      "PREPARING": "PREPARING",
+      "ONTHEWAY": "ONTHEWAY",
+      "CANCELLED": "CANCELLED",
+      "DELIVERED": "DELIVERED"
+    }
+  }
+}

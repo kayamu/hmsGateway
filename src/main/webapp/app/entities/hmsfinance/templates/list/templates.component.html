@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="TemplatesHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.home.title">Templates</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-templates"
+        [routerLink]="['/templates/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.home.createLabel"> Create a new Templates </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="templates?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.home.notFound">No Templates found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="templates && templates.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.type">Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="explanation">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.explanation">Explanation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isActive">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.isActive">Is Active</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="templateItems.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinanceTemplates.templateItems">Template Items</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let templates of templates; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/templates', templates.id, 'view']">{{ templates.id }}</a>
+          </td>
+          <td>{{ templates.name }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.ITEMTYPES.' + templates.type }}">{{ templates.type }}</td>
+          <td>{{ templates.explanation }}</td>
+          <td>{{ templates.isActive }}</td>
+          <td>{{ templates.createdDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let templateItems of templates.templateItems; let last = last">
+              <a class="form-control-static" [routerLink]="['/template-items', templateItems.id, 'view']">{{ templateItems.name }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/templates', templates.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/templates', templates.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(templates)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

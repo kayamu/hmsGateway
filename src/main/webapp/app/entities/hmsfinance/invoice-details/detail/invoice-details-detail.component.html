@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoiceDetails">
+      <h2 data-cy="invoiceDetailsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.detail.title">Invoice Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.contactId">Contact Id</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.contactId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.cartId">Cart Id</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.cartId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemId">Item Id</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.itemId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemName">Item Name</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.itemName }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemCode">Item Code</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.itemCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.itemType">Item Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.ITEMTYPES.' + invoiceDetails.itemType }}">{{ invoiceDetails.itemType }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.paymentType">Payment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.PAYMENTTYPES.' + invoiceDetails.paymentType }}">{{ invoiceDetails.paymentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionStartingDate">Subscription Starting Date</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.subscriptionStartingDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subscriptionDurationWeeks">Subscription Duration Weeks</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.subscriptionDurationWeeks }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.detailAmount">Detail Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.detailAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.lineNumber">Line Number</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.lineNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistId">Nutritionist Id</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.nutritionistId }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalCost">Total Cost</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.totalCost }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalProfit">Total Profit</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.totalProfit }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistEarning">Nutritionist Earning</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.nutritionistEarning }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.nutritionistPercentage">Nutritionist Percentage</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.nutritionistPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesAmount">Fedaral Taxes Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.fedaralTaxesAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.fedaralTaxesPercentage">Fedaral Taxes Percentage</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.fedaralTaxesPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesAmount">Provintional Taxes Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.provintionalTaxesAmount }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.provintionalTaxesPercentage">Provintional Taxes Percentage</span>
+        </dt>
+        <dd>
+          <span>{{ invoiceDetails.provintionalTaxesPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesAmount">Total Taxes Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.totalTaxesAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalTaxesPercentage">Total Taxes Percentage</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.totalTaxesPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountAmount">Discount Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.discountAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.discountPercentage">Discount Percentage</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.discountPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnCode">Add On Code</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.addOnCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnAmount">Add On Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.addOnAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.addOnPercentage">Add On Percentage</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.addOnPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ invoiceDetails.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceInvoiceDetails.subItems">Sub Items</span></dt>
+        <dd>
+          <span *ngFor="let subItems of invoiceDetails.subItems; let last = last">
+            <a [routerLink]="['/sub-items', subItems.id, 'view']">{{ subItems.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoice-details', invoiceDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

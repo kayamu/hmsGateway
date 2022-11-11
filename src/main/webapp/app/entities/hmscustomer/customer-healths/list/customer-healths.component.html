@@ -1,0 +1,184 @@
+<div>
+  <h2 id="page-heading" data-cy="CustomerHealthsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.home.title">Customer Healths</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-customer-healths"
+        [routerLink]="['/customer-healths/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.home.createLabel"> Create a new Customer Healths </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="customerHealths?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.home.notFound">No Customer Healths found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="customerHealths && customerHealths.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.contactId">Contact Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="currentWeight">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentWeight">Current Weight</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="currentHeight">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.currentHeight">Current Height</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="measureUnit">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.measureUnit">Measure Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="activityLevel">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.activityLevel">Activity Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetWeight">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetWeight">Target Weight</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targerCalorie">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targerCalorie">Targer Calorie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetBodyFat">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.targetBodyFat">Target Body Fat</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="goal">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.goal">Goal</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="active">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.active">Active</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detail">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.detail">Detail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="allergens.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmscustomerCustomerHealths.allergens">Allergens</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customerHealths of customerHealths; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/customer-healths', customerHealths.id, 'view']">{{ customerHealths.id }}</a>
+          </td>
+          <td>{{ customerHealths.name }}</td>
+          <td>{{ customerHealths.contactId }}</td>
+          <td>{{ customerHealths.currentWeight }}</td>
+          <td>{{ customerHealths.currentHeight }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.UNITS.' + customerHealths.measureUnit }}">{{ customerHealths.measureUnit }}</td>
+          <td>{{ customerHealths.activityLevel }}</td>
+          <td>{{ customerHealths.targetWeight }}</td>
+          <td>{{ customerHealths.targerCalorie }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.BODYFATS.' + customerHealths.targetBodyFat }}">{{ customerHealths.targetBodyFat }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.GOALS.' + customerHealths.goal }}">{{ customerHealths.goal }}</td>
+          <td>{{ customerHealths.active }}</td>
+          <td>{{ customerHealths.detail }}</td>
+          <td>{{ customerHealths.createdDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let allergens of customerHealths.allergens; let last = last">
+              <a class="form-control-static" [routerLink]="['/allergens', allergens.id, 'view']">{{ allergens.name }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/customer-healths', customerHealths.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/customer-healths', customerHealths.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(customerHealths)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

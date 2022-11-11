@@ -1,0 +1,122 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174020",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "invoices",
+  "fields": [
+    {
+      "fieldName": "invoiceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactAddressId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactBillingAdrId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cartId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "INVOICETYPES",
+      "fieldValues": "PROPOSAL (proposal),CANCELLED (cancelled),BILLED (billed),PAID (paid)"
+    },
+    {
+      "fieldName": "requestDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "contactName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "invoiceDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lastTranactionId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalProfit",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalTaxes",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fedaralTaxesAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "provintionalTaxesAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "discountsAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "addOnAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "Invoices",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "payments",
+      "otherEntityRelationshipName": "invoices",
+      "relationshipName": "payment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "invoiceTransactions",
+      "otherEntityRelationshipName": "invoices",
+      "relationshipName": "invoiceTransactions",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "invoiceDetails",
+      "otherEntityRelationshipName": "invoices",
+      "ownerSide": true,
+      "relationshipName": "invoiceDetails",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

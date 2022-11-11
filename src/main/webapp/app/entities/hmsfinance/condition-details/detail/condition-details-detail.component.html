@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="conditionDetails">
+      <h2 data-cy="conditionDetailsDetailsHeading">
+        <span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.detail.title">Condition Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ conditionDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.name">Name</span></dt>
+        <dd>
+          <span>{{ conditionDetails.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.explanation">Explanation</span></dt>
+        <dd>
+          <span>{{ conditionDetails.explanation }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareField">Compare Field</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.FIELDS.' + conditionDetails.compareField }}">{{ conditionDetails.compareField }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.operator">Operator</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.OPERATORS.' + conditionDetails.operator }}">{{ conditionDetails.operator }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupIndex">Group Index</span></dt>
+        <dd>
+          <span>{{ conditionDetails.groupIndex }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.compareValue">Compare Value</span></dt>
+        <dd>
+          <span>{{ conditionDetails.compareValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ conditionDetails.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.lineLogicType">Line Logic Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.LOGICTYPES.' + conditionDetails.lineLogicType }}">{{
+            conditionDetails.lineLogicType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.groupLogicType">Group Logic Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'hmsgatewayApp.LOGICTYPES.' + conditionDetails.groupLogicType }}">{{
+            conditionDetails.groupLogicType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="hmsgatewayApp.hmsfinanceConditionDetails.nextCondition">Next Condition</span></dt>
+        <dd>
+          <span>{{ conditionDetails.nextCondition }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/condition-details', conditionDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

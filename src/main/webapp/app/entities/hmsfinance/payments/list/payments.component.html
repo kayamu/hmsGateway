@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="PaymentsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.home.title">Payments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payments"
+        [routerLink]="['/payments/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.home.createLabel"> Create a new Payments </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="payments?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.home.notFound">No Payments found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="payments && payments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="refNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.refNumber">Ref Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="paymentType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.paymentType">Payment Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.contactId">Contact Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="explanation">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.explanation">Explanation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="operationDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.operationDate">Operation Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="amount">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.amount">Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="invoices.invoiceNumber">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsfinancePayments.invoices">Invoices</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payments of payments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payments', payments.id, 'view']">{{ payments.id }}</a>
+          </td>
+          <td>{{ payments.refNumber }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.PAYMENTTYPES.' + payments.paymentType }}">{{ payments.paymentType }}</td>
+          <td>{{ payments.contactId }}</td>
+          <td>{{ payments.explanation }}</td>
+          <td>{{ payments.operationDate | formatMediumDate }}</td>
+          <td>{{ payments.amount }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.PAYMENTSTATUS.' + payments.status }}">{{ payments.status }}</td>
+          <td>{{ payments.createdDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="payments.invoices">
+              <a [routerLink]="['/invoices', payments.invoices.id, 'view']">{{ payments.invoices.invoiceNumber }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payments', payments.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payments', payments.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(payments)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="payments && payments.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

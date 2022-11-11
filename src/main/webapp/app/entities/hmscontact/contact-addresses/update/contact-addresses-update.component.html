@@ -1,0 +1,203 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-contact-addresses-heading"
+        data-cy="ContactAddressesCreateUpdateHeading"
+        jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.home.createOrEditLabel"
+      >
+        Create or edit a Contact Addresses
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessName" for="field_bussinessName"
+            >Bussiness Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bussinessName"
+            id="field_bussinessName"
+            data-cy="bussinessName"
+            formControlName="bussinessName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.bussinessId" for="field_bussinessId"
+            >Bussiness Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bussinessId"
+            id="field_bussinessId"
+            data-cy="bussinessId"
+            formControlName="bussinessId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address1" for="field_address1">Address 1</label>
+          <input type="text" class="form-control" name="address1" id="field_address1" data-cy="address1" formControlName="address1" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.address2" for="field_address2">Address 2</label>
+          <input type="text" class="form-control" name="address2" id="field_address2" data-cy="address2" formControlName="address2" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.city" for="field_city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.postalCode" for="field_postalCode"
+            >Postal Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="postalCode"
+            id="field_postalCode"
+            data-cy="postalCode"
+            formControlName="postalCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.province" for="field_province">Province</label>
+          <input type="text" class="form-control" name="province" id="field_province" data-cy="province" formControlName="province" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.detail" for="field_detail">Detail</label>
+          <input type="text" class="form-control" name="detail" id="field_detail" data-cy="detail" formControlName="detail" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.active" for="field_active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.contractStartDate" for="field_contractStartDate"
+            >Contract Start Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_contractStartDate"
+              data-cy="contractStartDate"
+              type="text"
+              class="form-control"
+              name="contractStartDate"
+              ngbDatepicker
+              #contractStartDateDp="ngbDatepicker"
+              formControlName="contractStartDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="contractStartDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.agrrementId" for="field_agrrementId"
+            >Agrrement Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="agrrementId"
+            id="field_agrrementId"
+            data-cy="agrrementId"
+            formControlName="agrrementId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.employmentType" for="field_employmentType"
+            >Employment Type</label
+          >
+          <select
+            class="form-control"
+            name="employmentType"
+            formControlName="employmentType"
+            id="field_employmentType"
+            data-cy="employmentType"
+          >
+            <option [ngValue]="null">{{ 'hmsgatewayApp.EMPLOYMENTTYPES.null' | translate }}</option>
+            <option *ngFor="let eMPLOYMENTTYPES of eMPLOYMENTTYPESValues" [value]="eMPLOYMENTTYPES">
+              {{ 'hmsgatewayApp.EMPLOYMENTTYPES.' + eMPLOYMENTTYPES | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.hourlyRate" for="field_hourlyRate"
+            >Hourly Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="hourlyRate"
+            id="field_hourlyRate"
+            data-cy="hourlyRate"
+            formControlName="hourlyRate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="hmsgatewayApp.hmscontactContactAddresses.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

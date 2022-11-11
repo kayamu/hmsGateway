@@ -1,0 +1,77 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111174420",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "template_items",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "DETAILTYPES",
+      "fieldValues": "EXPENSES (expenses),DISCOUNT (discount),NUTRITIONPAYMENT (nutritionPayment),TAXES (taxes),PROVINCIALTAXES (provincialTaxes),FEDERALTAXES (federalTaxes)"
+    },
+    {
+      "fieldName": "valueType",
+      "fieldType": "VALUETYPES",
+      "fieldValues": "PERCENTAGE (percentage),AMOUNT (amount)"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "explanation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isOnce",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "TemplateItems",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "conditions",
+      "otherEntityRelationshipName": "templateItem",
+      "relationshipName": "conditions",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "templates",
+      "otherEntityRelationshipName": "templateItems",
+      "ownerSide": false,
+      "relationshipName": "templates",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

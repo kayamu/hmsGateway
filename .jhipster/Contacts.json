@@ -1,0 +1,69 @@
+{
+  "applications": ["hmsgateway", "hmscontact"],
+  "changelogDate": "20221111180420",
+  "clientRootFolder": "hmscontact",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "contacts",
+  "fields": [
+    {
+      "fieldName": "userID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "CONTACTTYPE",
+      "fieldValues": "CUSTOMER,KITCHEN,NUTRITIONIST,LOGISTIC,OUTSOURCE,PARTHNER,SUBCONTRACTOR,EMPLOYEE"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hstNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "birthdate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmscontact",
+  "name": "Contacts",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "contactAddresses",
+      "otherEntityRelationshipName": "contacts",
+      "ownerSide": true,
+      "relationshipName": "contactAddresses",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

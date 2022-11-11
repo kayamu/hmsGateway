@@ -1,0 +1,118 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "applications": {
+      "hmscontact": {
+        "applicationIndex": 1,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmscustomer": {
+        "applicationIndex": 2,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmsdelivery": {
+        "applicationIndex": 3,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmsfinance": {
+        "applicationIndex": 4,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmskitchen": {
+        "applicationIndex": 5,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmsmenu": {
+        "applicationIndex": 6,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      },
+      "hmsnutritionist": {
+        "applicationIndex": 7,
+        "clientFramework": "no",
+        "serverPort": "8081"
+      }
+    },
+    "authenticationType": "jwt",
+    "baseName": "hmsgateway",
+    "blueprints": [],
+    "buildTool": "gradle",
+    "cacheProvider": "no",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1668188060687,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entities": [
+      "ImagesUrl",
+      "ContactAddresses",
+      "CustomerHealths",
+      "CookOrders",
+      "Nutriens",
+      "Invoices",
+      "Items",
+      "Conditions",
+      "InvoiceTransactions",
+      "TemplateItems",
+      "Allergens",
+      "MenuGroups",
+      "DeliveryTransactions",
+      "Meals",
+      "Templates",
+      "ConditionDetails",
+      "Ingredients",
+      "Payments",
+      "Consultings",
+      "SubItems",
+      "Recipies",
+      "MealIngredients",
+      "InvoiceDetails",
+      "CookTransactions",
+      "Menus",
+      "DeliveryOrders",
+      "Epicrysis",
+      "MenuSuggestions",
+      "ConsultingStatus",
+      "Contacts"
+    ],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.9.3",
+    "jwtSecretKey": "OGRmODIyOWUxZjJkZDVmZGNhODljMzNiNDY1OWNhMDA0NWQ4NzNkNDJkNmI4NjE0MTNmN2ZjN2FkMWMzYTVhMzYyMDk4NmFjMDE5OGUzYzUyOGQ0MzQ5YzU3YmJmZTg5NjU5YWZmMTM4Yzg1NTYxYzJiMDIzZjhkMGRmMWI4Y2I=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1668189860000,
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "otherModules": [],
+    "packageFolder": "com/polarbears/capstone/hmsgateway",
+    "packageName": "com.polarbears.capstone.hmsgateway",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": false,
+    "skipFakeData": false,
+    "skipUserManagement": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  }
+}

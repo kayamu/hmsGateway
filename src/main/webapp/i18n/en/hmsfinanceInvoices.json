@@ -1,0 +1,50 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceInvoices": {
+      "home": {
+        "title": "Invoices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Invoices",
+        "createOrEditLabel": "Create or edit a Invoices",
+        "notFound": "No Invoices found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Invoices {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoices"
+      },
+      "id": "ID",
+      "invoiceNumber": "Invoice Number",
+      "contactId": "Contact Id",
+      "contactAddressId": "Contact Address Id",
+      "contactBillingAdrId": "Contact Billing Adr Id",
+      "cartId": "Cart Id",
+      "type": "Type",
+      "requestDate": "Request Date",
+      "contactName": "Contact Name",
+      "invoiceDate": "Invoice Date",
+      "lastTranactionId": "Last Tranaction Id",
+      "totalCost": "Total Cost",
+      "totalProfit": "Total Profit",
+      "totalAmount": "Total Amount",
+      "totalTaxes": "Total Taxes",
+      "fedaralTaxesAmount": "Fedaral Taxes Amount",
+      "provintionalTaxesAmount": "Provintional Taxes Amount",
+      "discountsAmount": "Discounts Amount",
+      "addOnAmount": "Add On Amount",
+      "message": "Message",
+      "createdDate": "Created Date",
+      "payment": "Payment",
+      "invoiceTransactions": "Invoice Transactions",
+      "invoiceDetails": "Invoice Details"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceInvoices": {
+      "created": "A new Invoices is created with identifier {{ param }}",
+      "updated": "A Invoices is updated with identifier {{ param }}",
+      "deleted": "A Invoices is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "applications": ["hmsgateway", "hmscustomer"],
+  "changelogDate": "20221111173720",
+  "clientRootFolder": "hmscustomer",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "customer_healths",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "currentWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "currentHeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "measureUnit",
+      "fieldType": "UNITS",
+      "fieldValues": "KG (Kg),LB (lb)"
+    },
+    {
+      "fieldName": "activityLevel",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "targetWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "targerCalorie",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "targetBodyFat",
+      "fieldType": "BODYFATS",
+      "fieldValues": "LOW,MEDIUM,HIGH"
+    },
+    {
+      "fieldName": "goal",
+      "fieldType": "GOALS",
+      "fieldValues": "LOSEFAT,MAINTAIN,BUILDMUCSLE"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "detail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmscustomer",
+  "name": "CustomerHealths",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "allergens",
+      "otherEntityRelationshipName": "customerHealths",
+      "ownerSide": true,
+      "relationshipName": "allergens",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,32 @@
+{
+  "hmsgatewayApp": {
+    "hmsfinanceConditions": {
+      "home": {
+        "title": "Conditions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Conditions",
+        "createOrEditLabel": "Create or edit a Conditions",
+        "notFound": "No Conditions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Conditions {{ id }}?"
+      },
+      "detail": {
+        "title": "Conditions"
+      },
+      "id": "ID",
+      "name": "Name",
+      "type": "Type",
+      "createdDate": "Created Date",
+      "templateItem": "Template Item",
+      "conditionDetails": "Condition Details"
+    }
+  },
+  "hmsfinanceApp": {
+    "hmsfinanceConditions": {
+      "created": "A new Conditions is created with identifier {{ param }}",
+      "updated": "A Conditions is updated with identifier {{ param }}",
+      "deleted": "A Conditions is deleted with identifier {{ param }}"
+    }
+  }
+}

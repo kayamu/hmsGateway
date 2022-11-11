@@ -1,0 +1,154 @@
+{
+  "applications": ["hmsgateway", "hmsfinance"],
+  "changelogDate": "20221111175720",
+  "clientRootFolder": "hmsfinance",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "invoice_details",
+  "fields": [
+    {
+      "fieldName": "contactId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cartId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "itemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "itemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemType",
+      "fieldType": "ITEMTYPES",
+      "fieldValues": "PRODUCT (Product),SERVICE (Service)"
+    },
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PAYMENTTYPES",
+      "fieldValues": "IN,OUT"
+    },
+    {
+      "fieldName": "subscriptionStartingDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "subscriptionDurationWeeks",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "detailAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "lineNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nutritionistId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalProfit",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nutritionistEarning",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nutritionistPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fedaralTaxesAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fedaralTaxesPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "provintionalTaxesAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "provintionalTaxesPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalTaxesAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalTaxesPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "discountAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "discountPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "addOnCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addOnAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "addOnPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsfinance",
+  "name": "InvoiceDetails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "subItems",
+      "otherEntityRelationshipName": "invoiceDetail",
+      "ownerSide": true,
+      "relationshipName": "subItems",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "invoiceNumber",
+      "otherEntityName": "invoices",
+      "otherEntityRelationshipName": "invoiceDetails",
+      "ownerSide": false,
+      "relationshipName": "invoices",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

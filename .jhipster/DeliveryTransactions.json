@@ -1,0 +1,44 @@
+{
+  "applications": ["hmsgateway", "hmsdelivery"],
+  "changelogDate": "20221111174720",
+  "clientRootFolder": "hmsdelivery",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "delivery_transactions",
+  "fields": [
+    {
+      "fieldName": "statusChangedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "transactionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "DELIVERYTYPES",
+      "fieldValues": "PREPARING,ONTHEWAY,CANCELLED,DELIVERED"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "hmsdelivery",
+  "name": "DeliveryTransactions",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deliveryOrders",
+      "otherEntityRelationshipName": "deliveryTransactions",
+      "ownerSide": false,
+      "relationshipName": "deliveryOrders",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

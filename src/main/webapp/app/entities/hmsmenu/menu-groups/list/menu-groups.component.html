@@ -1,0 +1,229 @@
+<div>
+  <h2 id="page-heading" data-cy="MenuGroupsHeading">
+    <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.home.title">Menu Groups</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-menu-groups"
+        [routerLink]="['/menu-groups/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.home.createLabel"> Create a new Menu Groups </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="menuGroups?.length === 0">
+    <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.home.notFound">No Menu Groups found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="menuGroups && menuGroups.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactId">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.contactId">Contact Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cost">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.cost">Cost</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="salesPrice">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.salesPrice">Sales Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="explanation">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.explanation">Explanation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="goal">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.goal">Goal</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bodyType">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.bodyType">Body Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="activityLevelMin">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMin">Activity Level Min</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="activityLevelMax">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.activityLevelMax">Activity Level Max</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="weightMin">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMin">Weight Min</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="weightMax">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.weightMax">Weight Max</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dailyKcalMin">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMin">Daily Kcal Min</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dailyKcalMax">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.dailyKcalMax">Daily Kcal Max</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetWeightMin">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMin">Target Weight Min</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetWeightMax">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.targetWeightMax">Target Weight Max</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unit">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.unit">Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nutriens.name">
+            <div class="d-flex">
+              <span jhiTranslate="hmsgatewayApp.hmsmenuMenuGroups.nutriens">Nutriens</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menuGroups of menuGroups; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/menu-groups', menuGroups.id, 'view']">{{ menuGroups.id }}</a>
+          </td>
+          <td>{{ menuGroups.contactId }}</td>
+          <td>{{ menuGroups.name }}</td>
+          <td>{{ menuGroups.cost }}</td>
+          <td>{{ menuGroups.salesPrice }}</td>
+          <td>{{ menuGroups.explanation }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.GOALS.' + menuGroups.goal }}">{{ menuGroups.goal }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.BODYFATS.' + menuGroups.bodyType }}">{{ menuGroups.bodyType }}</td>
+          <td>{{ menuGroups.activityLevelMin }}</td>
+          <td>{{ menuGroups.activityLevelMax }}</td>
+          <td>{{ menuGroups.weightMin }}</td>
+          <td>{{ menuGroups.weightMax }}</td>
+          <td>{{ menuGroups.dailyKcalMin }}</td>
+          <td>{{ menuGroups.dailyKcalMax }}</td>
+          <td>{{ menuGroups.targetWeightMin }}</td>
+          <td>{{ menuGroups.targetWeightMax }}</td>
+          <td jhiTranslate="{{ 'hmsgatewayApp.UNITS.' + menuGroups.unit }}">{{ menuGroups.unit }}</td>
+          <td>{{ menuGroups.createdDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="menuGroups.nutriens">
+              <a [routerLink]="['/nutriens', menuGroups.nutriens.id, 'view']">{{ menuGroups.nutriens.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/menu-groups', menuGroups.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/menu-groups', menuGroups.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(menuGroups)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="menuGroups && menuGroups.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
